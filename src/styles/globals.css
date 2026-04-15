@@ -129,7 +129,7 @@ body {
   transition: box-shadow 200ms ease, background 200ms ease;
 }
 .btn-primary-glow:hover {
-  box-shadow: 0 4px 28px rgba(124,58,237,0.5);
+  box-shadow: 0 4px 28px rgba(201,162,39,0.4);
 }
 
 /* Карточки */
@@ -248,12 +248,61 @@ button, a[class*="rounded-full"], a[class*="rounded-"] {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--t-dot);
-  box-shadow: 0 0 8px var(--t-dot-glow);
+  background: #a78bfa;
+  box-shadow: 0 0 8px rgba(167,139,250,0.7);
   animation: badge-pulse 2s ease-in-out infinite;
   flex-shrink: 0;
 }
 @keyframes badge-pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* ===================================================
+   Mobile responsive grid helpers
+   =================================================== */
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 767px) {
+  .grid-3col {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.section-pad {
+  padding: 76px 56px;
+}
+@media (max-width: 767px) {
+  .section-pad {
+    padding: 52px 20px;
+  }
+}
+
+.hero-pad {
+  padding: 92px 56px 68px;
+}
+@media (max-width: 767px) {
+  .hero-pad {
+    padding: 72px 20px 52px;
+  }
+}
+
+.h1-resp {
+  font-size: clamp(32px, 7vw, 52px);
+}
+
+.hide-mobile {
+  display: block;
+}
+@media (max-width: 767px) {
+  .hide-mobile { display: none; }
 }

@@ -33,7 +33,7 @@ export function FacetsSection() {
   const [active, setActive] = useState<TabId>("self");
 
   return (
-    <section style={{ background: "var(--t-bg-surface)", padding: "76px 24px" }}>
+    <section style={{ background: "var(--t-bg-surface)"}} className="section-pad">
       <div style={{ maxWidth: "940px", margin: "0 auto", textAlign: "center" }}>
 
         <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
@@ -53,7 +53,7 @@ export function FacetsSection() {
             <button key={tab.id} onClick={() => setActive(tab.id)} style={{
               padding: "7px 18px", borderRadius: "999px", fontSize: "12px", fontWeight: 500,
               cursor: "pointer", border: "none", fontFamily: "inherit", transition: "all 0.15s",
-              background: active === tab.id ? "rgba(124,58,237,0.18)" : "rgba(255,255,255,0.04)",
+              background: active === tab.id ? "rgba(201,162,39,0.14)" : "rgba(255,255,255,0.04)",
               color: active === tab.id ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.3)",
             }}>
               {tab.label}
@@ -61,7 +61,7 @@ export function FacetsSection() {
           ))}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
+        <div className="grid-3col">
           {CARDS[active].map((card) => (
             <div key={card.badge} style={{
               background: "var(--t-bg-card)", border: "1px solid var(--t-border)",

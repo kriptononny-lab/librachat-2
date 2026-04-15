@@ -16,7 +16,7 @@ export function FaqSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section style={{ background: "var(--t-bg-surface)", padding: "76px 24px" }}>
+    <section style={{ background: "var(--t-bg-surface)"}} className="section-pad">
       <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
 
         <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>

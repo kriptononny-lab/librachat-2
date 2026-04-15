@@ -35,7 +35,7 @@ const REVIEWS = [
 
 export function SocialProofSection() {
   return (
-    <section style={{ background: "var(--t-bg-surface)", padding: "76px 24px" }}>
+    <section style={{ background: "var(--t-bg-surface)"}} className="section-pad">
       <div style={{ maxWidth: "940px", margin: "0 auto", textAlign: "center" }}>
 
         <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
@@ -50,7 +50,7 @@ export function SocialProofSection() {
           Реальные результаты реальных людей
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
+        <div className="grid-3col">
           {REVIEWS.map((r) => (
             <div key={r.name} style={{
               background: "var(--t-bg-card)", border: "1px solid var(--t-border)",
