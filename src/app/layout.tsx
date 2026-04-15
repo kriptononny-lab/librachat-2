@@ -56,6 +56,32 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{__html: `
+          (function(){
+            try {
+              var params = new URLSearchParams(window.location.search);
+              var theme = params.get('theme');
+              if (theme === 'gold') {
+                var r = document.documentElement;
+                r.style.setProperty('--t-bg-base','#080808');
+                r.style.setProperty('--t-bg-surface','#0f0f0f');
+                r.style.setProperty('--t-bg-card','#191919');
+                r.style.setProperty('--t-bg-card-pop','#201c10');
+                r.style.setProperty('--t-brand','#c9a227');
+                r.style.setProperty('--t-brand-light','#e8c84a');
+                r.style.setProperty('--t-brand-hover','#d4a82e');
+                r.style.setProperty('--t-brand-glow','rgba(201,162,39,0.25)');
+                r.style.setProperty('--t-brand-orb','rgba(201,162,39,0.1)');
+                r.style.setProperty('--t-border','rgba(255,255,255,0.07)');
+                r.style.setProperty('--t-border-pop','rgba(201,162,39,0.22)');
+                r.style.setProperty('--t-btn-text','#000000');
+                r.style.setProperty('--t-gradient','linear-gradient(135deg,#e8c84a,#c9a227)');
+                r.style.setProperty('--t-dot','#c9a227');
+                r.style.setProperty('--t-dot-glow','rgba(201,162,39,0.6)');
+              }
+            } catch(e) {}
+          })();
+        `}} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&display=swap" />
         <style dangerouslySetInnerHTML={{__html: `

@@ -39,7 +39,7 @@ export function FaqSection() {
                 display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px",
                 background: "transparent", border: "none", cursor: "pointer", fontFamily: "inherit", textAlign: "left",
               }}>
-                <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--t-btn-text)" }}>{faq.q}</span>
+                <span style={{ fontSize: "14px", fontWeight: 500, color: "#ffffff" }}>{faq.q}</span>
                 {open === i
                   ? <Minus size={16} color="rgba(255,255,255,0.3)" style={{ flexShrink: 0 }} />
                   : <Plus size={16} color="rgba(255,255,255,0.25)" style={{ flexShrink: 0 }} />}

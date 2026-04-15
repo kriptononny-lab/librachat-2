@@ -21,7 +21,7 @@ export function CtaSection() {
           14 ДНЕЙ БЕСПЛАТНО
         </div>
         <h2 style={{
-          fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "var(--t-btn-text)",
+          fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "#ffffff",
           lineHeight: 1.15, letterSpacing: "-0.022em", marginBottom: "12px",
         }}>
           Попробуй LibraChat<br />для твоих задач

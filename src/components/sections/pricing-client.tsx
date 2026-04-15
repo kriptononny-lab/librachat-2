@@ -99,7 +99,7 @@ export function PricingClient() {
             <span className="badge-dot" />ТАРИФЫ
           </div>
           <h1 style={{
-            fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 800, color: "var(--t-btn-text)",
+            fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 800, color: "#ffffff",
             lineHeight: 1.1, letterSpacing: "-0.025em", marginBottom: "12px",
           }}>
             Простые и{" "}
@@ -241,7 +241,7 @@ export function PricingClient() {
                     fontFamily: "inherit", textAlign: "left",
                   }}
                 >
-                  <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--t-btn-text)" }}>{faq.q}</span>
+                  <span style={{ fontSize: "14px", fontWeight: 500, color: "#ffffff" }}>{faq.q}</span>
                   {openFaq === i
                     ? <Minus size={16} color="rgba(255,255,255,0.3)" style={{ flexShrink: 0 }} />
                     : <Plus size={16} color="rgba(255,255,255,0.25)" style={{ flexShrink: 0 }} />}
@@ -271,7 +271,7 @@ export function PricingClient() {
             <span className="badge-dot" />14 ДНЕЙ БЕСПЛАТНО
           </div>
           <h2 style={{
-            fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "var(--t-btn-text)",
+            fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "#ffffff",
             lineHeight: 1.15, marginBottom: "12px",
           }}>
             Начни бесплатно<br />прямо сейчас
