@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { BarChart2, FileText, Languages, Code2, Paperclip, Image, Mic, SendHorizontal } from "lucide-react";
+import { BarChart2, FileText, Languages, Code2, Paperclip, Image as ImageIcon, Mic, SendHorizontal } from "lucide-react";
 
 const QUICK_ACTIONS = [
   { icon: BarChart2, label: "Анализ данных" },
@@ -147,7 +147,7 @@ export function HeroSection() {
               <div style={{ display: "flex", gap: "2px" }}>
                 {[
                   { Icon: Paperclip, label: "Прикрепить файл" },
-                  { Icon: Image, label: "Изображение" },
+                  { Icon: ImageIcon, label: "Изображение" },
                   { Icon: Mic, label: "Голос" },
                 ].map(({ Icon, label }) => (
                   <button
