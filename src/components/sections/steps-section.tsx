@@ -1,26 +1,32 @@
 "use client";
 
+import Link from "next/link";
+import { UserPlus, MessageCircle, Sparkles } from "lucide-react";
+
 const STEPS = [
   {
     number: "1",
+    Icon: UserPlus,
     title: "Зарегистрируйтесь",
-    desc: "Создайте аккаунт за 30 секунд — без карты, только email и пароль.",
+    desc: "Создайте аккаунт за 30 секунд. Никаких данных карты — просто email и пароль.",
   },
   {
     number: "2",
+    Icon: MessageCircle,
     title: "Задайте вопрос",
     desc: "Напишите любой вопрос на русском — я понимаю контекст и отвечаю сразу.",
   },
   {
     number: "3",
+    Icon: Sparkles,
     title: "Получите результат",
-    desc: "Деловой текст, код, анализ или перевод — мгновенно и без галлюцинаций.",
+    desc: "Деловой текст, код, анализ или перевод — готово мгновенно.",
   },
 ];
 
 export function StepsSection() {
   return (
-    <section style={{ background: "var(--t-bg-base)", padding: "76px 24px" }}>
+    <section style={{ background: "#07070d", padding: "76px 24px" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
 
         <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
@@ -34,38 +40,64 @@ export function StepsSection() {
         }}>
           Начни работу за 2 минуты
         </h2>
-        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "36px" }}>
+        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "48px" }}>
           Никаких сложных настроек — просто зайди и начни
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "14px" }}>
-          {STEPS.map((step) => (
-            <div
-              key={step.number}
-              style={{
-                background: "var(--t-bg-card)",
-                border: "1px solid var(--t-border)",
-                borderRadius: "18px", padding: "28px 22px",
-                textAlign: "left",
-              }}
-            >
-              <div style={{
-                width: "36px", height: "36px", borderRadius: "50%",
-                background: "var(--t-brand-orb)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: "13px", fontWeight: 700, color: "var(--t-brand-light)",
-                marginBottom: "16px",
-              }}>
-                {step.number}
+        {/* Шаги с большими иконками */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "32px", marginBottom: "48px" }}>
+          {STEPS.map(({ number, Icon, title, desc }) => (
+            <div key={number} style={{ textAlign: "center" }}>
+              {/* Круглая иконка с номером-бейджем */}
+              <div style={{ position: "relative", display: "inline-block", marginBottom: "20px" }}>
+                <div style={{
+                  width: "80px", height: "80px", borderRadius: "50%",
+                  background: "rgba(124,58,237,0.12)",
+                  border: "1px solid rgba(124,58,237,0.2)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  margin: "0 auto",
+                }}>
+                  <Icon size={32} color="#a78bfa" strokeWidth={1.5} />
+                </div>
+                {/* Номер-бейдж */}
+                <div style={{
+                  position: "absolute", bottom: "0", right: "0",
+                  width: "24px", height: "24px", borderRadius: "50%",
+                  background: "#7c3aed",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: "11px", fontWeight: 700, color: "#fff",
+                  boxShadow: "0 0 0 2px #07070d",
+                }}>
+                  {number}
+                </div>
               </div>
-              <div style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", marginBottom: "8px" }}>
-                {step.title}
+              <div style={{ fontSize: "16px", fontWeight: 700, color: "#ffffff", marginBottom: "8px" }}>
+                {title}
               </div>
-              <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65 }}>
-                {step.desc}
+              <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65 }}>
+                {desc}
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA кнопка */}
+        <div>
+          <Link href="https://librachat.kz/auth">
+            <button style={{
+              background: "#7c3aed", border: "none", color: "#fff",
+              borderRadius: "999px", padding: "14px 36px",
+              fontSize: "15px", fontWeight: 600, cursor: "pointer",
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              fontFamily: "inherit",
+              boxShadow: "0 4px 20px rgba(124,58,237,0.35)",
+            }}>
+              Начать бесплатно →
+            </button>
+          </Link>
+          <div style={{ marginTop: "12px", fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>
+            30 секунд · Без карты · Без VPN
+          </div>
         </div>
 
       </div>
