@@ -88,7 +88,7 @@ export function SocialProofSection() {
                     </div>
                     <div>
                       <div style={{ fontSize: "13px", fontWeight: 600, color: "#ffffff" }}>{r.name}</div>
-                      <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>{r.role}</div>
+                      <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.42)" }}>{r.role}</div>
                     </div>
                   </div>
                   <Link href={r.href} style={{ fontSize: "12px", color: "var(--t-brand)", textDecoration: "none", fontWeight: 500 }}>
