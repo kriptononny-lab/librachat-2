@@ -129,7 +129,7 @@ body {
   transition: box-shadow 200ms ease, background 200ms ease;
 }
 .btn-primary-glow:hover {
-  box-shadow: 0 4px 28px rgba(201,162,39,0.4);
+  box-shadow: 0 4px 28px rgba(124,58,237,0.5);
 }
 
 /* Карточки */

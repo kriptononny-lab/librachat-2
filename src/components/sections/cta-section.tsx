@@ -9,7 +9,7 @@ export function CtaSection() {
       <div style={{
         position: "absolute", bottom: "-60px", left: "50%", transform: "translateX(-50%)",
         width: "580px", height: "320px",
-        background: "radial-gradient(ellipse, rgba(201,162,39,0.09) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%)",
         pointerEvents: "none", borderRadius: "50%",
       }} />
       <div style={{ position: "relative", zIndex: 1 }}>
@@ -33,7 +33,7 @@ export function CtaSection() {
               borderRadius: "999px", padding: "14px 36px",
               fontSize: "14px", fontWeight: 600, cursor: "pointer",
               display: "flex", alignItems: "center", gap: "8px",
-              fontFamily: "inherit", boxShadow: "0 4px 20px rgba(201,162,39,0.25)",
+              fontFamily: "inherit", boxShadow: "0 4px 20px rgba(124,58,237,0.35)",
             }}>
               <Zap size={16} /> Начать бесплатно
             </button>

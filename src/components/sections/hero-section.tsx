@@ -114,7 +114,7 @@ export function HeroSection() {
             border: "1px solid var(--t-border-pop)",
             borderRadius: "20px",
             padding: "21px 16px 13px 25px",
-            boxShadow: "0 0 0 4px rgba(201,162,39,0.03), 0 28px 60px rgba(0,0,0,0.7)",
+            boxShadow: "0 0 0 4px rgba(124,58,237,0.04), 0 28px 60px rgba(0,0,0,0.7)",
           }}>
             {/* Text area */}
             <textarea

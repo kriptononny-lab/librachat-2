@@ -53,7 +53,7 @@ export function FacetsSection() {
             <button key={tab.id} onClick={() => setActive(tab.id)} style={{
               padding: "7px 18px", borderRadius: "999px", fontSize: "12px", fontWeight: 500,
               cursor: "pointer", border: "none", fontFamily: "inherit", transition: "all 0.15s",
-              background: active === tab.id ? "rgba(201,162,39,0.14)" : "rgba(255,255,255,0.04)",
+              background: active === tab.id ? "rgba(124,58,237,0.18)" : "rgba(255,255,255,0.04)",
               color: active === tab.id ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.3)",
             }}>
               {tab.label}

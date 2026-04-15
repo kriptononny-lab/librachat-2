@@ -91,7 +91,7 @@ export function PricingClient() {
         <div style={{
           position: "absolute", top: "-80px", left: "50%", transform: "translateX(-50%)",
           width: "600px", height: "360px",
-          background: "radial-gradient(ellipse, rgba(201,162,39,0.11) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(124,58,237,0.14) 0%, transparent 70%)",
           pointerEvents: "none", borderRadius: "50%",
         }} />
         <div style={{ position: "relative", zIndex: 1 }}>
@@ -137,7 +137,7 @@ export function PricingClient() {
               Ежегодно
             </span>
             <span style={{
-              background: "var(--t-brand-orb)", border: "1px solid rgba(201,162,39,0.2)",
+              background: "var(--t-brand-orb)", border: "1px solid rgba(124,58,237,0.25)",
               color: "var(--t-brand-light)", fontSize: "11px", fontWeight: 600,
               padding: "3px 10px", borderRadius: "999px",
             }}>−20%</span>
@@ -166,7 +166,7 @@ export function PricingClient() {
                       position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)",
                       background: "var(--t-brand)", color: "var(--t-btn-text)", fontSize: "10px", fontWeight: 700,
                       padding: "3px 16px", borderRadius: "999px", whiteSpace: "nowrap",
-                      boxShadow: "0 4px 12px rgba(201,162,39,0.25)",
+                      boxShadow: "0 4px 12px rgba(124,58,237,0.35)",
                     }}>ПОПУЛЯРНЫЙ</div>
                   )}
                   <div style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.4)", marginBottom: "4px" }}>{plan.name}</div>
@@ -185,7 +185,7 @@ export function PricingClient() {
                       marginBottom: "22px", border: "none", fontFamily: "inherit",
                       background: plan.isPopular ? "var(--t-brand)" : "rgba(255,255,255,0.06)",
                       color: plan.isPopular ? "#fff" : "rgba(255,255,255,0.42)",
-                      boxShadow: plan.isPopular ? "0 4px 14px rgba(201,162,39,0.22)" : "none",
+                      boxShadow: plan.isPopular ? "0 4px 14px rgba(124,58,237,0.3)" : "none",
                     }}>{plan.cta}</button>
                   </Link>
                   <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", marginBottom: "18px" }} />
@@ -260,7 +260,7 @@ export function PricingClient() {
         <div style={{
           position: "absolute", bottom: "-60px", left: "50%", transform: "translateX(-50%)",
           width: "580px", height: "320px",
-          background: "radial-gradient(ellipse, rgba(201,162,39,0.09) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%)",
           pointerEvents: "none", borderRadius: "50%",
         }} />
         <div style={{ position: "relative", zIndex: 1 }}>
@@ -283,7 +283,7 @@ export function PricingClient() {
                 borderRadius: "999px", padding: "14px 36px",
                 fontSize: "14px", fontWeight: 600, cursor: "pointer",
                 display: "flex", alignItems: "center", gap: "8px",
-                fontFamily: "inherit", boxShadow: "0 4px 20px rgba(201,162,39,0.25)",
+                fontFamily: "inherit", boxShadow: "0 4px 20px rgba(124,58,237,0.35)",
               }}>
                 <Zap size={16} /> Начать бесплатно
               </button>
