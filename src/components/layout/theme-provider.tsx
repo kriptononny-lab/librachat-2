@@ -1,9 +1,8 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-const THEMES = {
+const THEMES: Record<string, Record<string, string>> = {
   default: {
     "--t-bg-base":    "#07070d",
     "--t-bg-surface": "#0d0d14",
@@ -20,7 +19,6 @@ const THEMES = {
     "--t-gradient":   "linear-gradient(135deg,#a78bfa,#7c3aed)",
     "--t-dot":        "#a78bfa",
     "--t-dot-glow":   "rgba(167,139,250,0.7)",
-    "--t-heading-font":"inherit",
   },
   gold: {
     "--t-bg-base":    "#080808",
@@ -38,21 +36,17 @@ const THEMES = {
     "--t-gradient":   "linear-gradient(135deg,#e8c84a,#c9a227)",
     "--t-dot":        "#c9a227",
     "--t-dot-glow":   "rgba(201,162,39,0.6)",
-    "--t-heading-font":"'Unbounded', sans-serif",
   },
 };
 
-export type ThemeKey = keyof typeof THEMES;
-
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const searchParams = useSearchParams();
-  const theme = (searchParams.get("theme") as ThemeKey) ?? "default";
-  const vars = THEMES[theme] ?? THEMES.default;
-
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const theme = params.get("theme") ?? "default";
+    const vars = THEMES[theme] ?? THEMES.default;
     const root = document.documentElement;
     Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
-  }, [theme, vars]);
+  }, []);
 
   return <>{children}</>;
 }

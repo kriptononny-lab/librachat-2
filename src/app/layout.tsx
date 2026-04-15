@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 
@@ -71,11 +70,9 @@ export default function RootLayout({
         `}} />
       </head>
       <body>
-        <Suspense fallback={null}>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
-        </Suspense>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
