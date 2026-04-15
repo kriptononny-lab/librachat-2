@@ -200,7 +200,7 @@ export function HeroSection() {
                 display: "flex", alignItems: "center", gap: "5px",
               }}
             >
-              <Icon size={12} />
+              <Icon size={12} color="rgba(255,255,255,0.65)" />
               {label}
             </button>
           ))}
