@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "@/styles/globals.css";
+import { ThemeProvider } from "@/components/layout/theme-provider";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://librachat.ai"),
@@ -55,6 +57,8 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&display=swap" />
         <style dangerouslySetInnerHTML={{__html: `
           .mobile-burger-btn { display: none !important; }
           .desktop-nav { display: flex; }
@@ -66,7 +70,13 @@ export default function RootLayout({
           }
         `}} />
       </head>
-      <body>{children}</body>
+      <body>
+        <Suspense fallback={null}>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </Suspense>
+      </body>
     </html>
   );
 }

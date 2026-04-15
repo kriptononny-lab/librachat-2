@@ -84,7 +84,7 @@ export function PricingClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div style={{ background: "#07070d" }}>
+    <div style={{ background: "var(--t-bg-base)" }}>
 
       {/* HERO */}
       <section style={{ padding: "92px 24px 72px", textAlign: "center", position: "relative", overflow: "hidden" }}>
@@ -99,12 +99,12 @@ export function PricingClient() {
             <span className="badge-dot" />ТАРИФЫ
           </div>
           <h1 style={{
-            fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 800, color: "#fff",
+            fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 800, color: "var(--t-btn-text)",
             lineHeight: 1.1, letterSpacing: "-0.025em", marginBottom: "12px",
           }}>
             Простые и{" "}
             <span style={{
-              background: "linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)",
+              background: "var(--t-gradient)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
             }}>честные цены</span>
           </h1>
@@ -121,7 +121,7 @@ export function PricingClient() {
             <div
               onClick={() => setIsYearly(!isYearly)}
               style={{
-                width: "44px", height: "24px", background: "#7c3aed",
+                width: "44px", height: "24px", background: "var(--t-brand)",
                 borderRadius: "999px", position: "relative", cursor: "pointer", flexShrink: 0,
               }}
             >
@@ -137,8 +137,8 @@ export function PricingClient() {
               Ежегодно
             </span>
             <span style={{
-              background: "rgba(124,58,237,0.12)", border: "1px solid rgba(124,58,237,0.25)",
-              color: "#a78bfa", fontSize: "11px", fontWeight: 600,
+              background: "var(--t-brand-orb)", border: "1px solid rgba(124,58,237,0.25)",
+              color: "var(--t-brand-light)", fontSize: "11px", fontWeight: 600,
               padding: "3px 10px", borderRadius: "999px",
             }}>−20%</span>
           </div>
@@ -155,8 +155,8 @@ export function PricingClient() {
                 <div
                   key={plan.id}
                   style={{
-                    background: plan.isPopular ? "#160f28" : "#141418",
-                    border: plan.isPopular ? "1px solid rgba(124,58,237,0.3)" : "1px solid rgba(255,255,255,0.06)",
+                    background: plan.isPopular ? "var(--t-bg-card-pop)" : "var(--t-bg-card)",
+                    border: plan.isPopular ? "1px solid var(--t-border-pop)" : "1px solid var(--t-border)",
                     borderRadius: "22px", padding: "28px 22px",
                     display: "flex", flexDirection: "column",
                     position: "relative", transition: "transform 0.2s",
@@ -167,17 +167,17 @@ export function PricingClient() {
                   {plan.isPopular && (
                     <div style={{
                       position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)",
-                      background: "#7c3aed", color: "#fff", fontSize: "10px", fontWeight: 700,
+                      background: "var(--t-brand)", color: "var(--t-btn-text)", fontSize: "10px", fontWeight: 700,
                       padding: "3px 16px", borderRadius: "999px", whiteSpace: "nowrap",
                       boxShadow: "0 4px 12px rgba(124,58,237,0.35)",
                     }}>ПОПУЛЯРНЫЙ</div>
                   )}
                   <div style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.4)", marginBottom: "4px" }}>{plan.name}</div>
                   <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.2)", marginBottom: "20px" }}>{plan.desc}</div>
-                  <div style={{ fontSize: "36px", fontWeight: 800, color: "#fff", lineHeight: 1, marginBottom: "4px" }}>
+                  <div style={{ fontSize: "36px", fontWeight: 800, color: "var(--t-btn-text)", lineHeight: 1, marginBottom: "4px" }}>
                     {price} ₽<span style={{ fontSize: "12px", fontWeight: 400, color: "rgba(255,255,255,0.22)" }}>/мес</span>
                   </div>
-                  <div style={{ fontSize: "11px", color: saving ? "#a78bfa" : "transparent", marginBottom: "20px", height: "16px" }}>
+                  <div style={{ fontSize: "11px", color: saving ? "var(--t-brand-light)" : "transparent", marginBottom: "20px", height: "16px" }}>
                     {saving ?? ""}
                   </div>
                   <Link href={plan.href}>
@@ -186,7 +186,7 @@ export function PricingClient() {
                       borderRadius: "999px", padding: "12px",
                       fontSize: "13px", fontWeight: 600, cursor: "pointer",
                       marginBottom: "22px", border: "none", fontFamily: "inherit",
-                      background: plan.isPopular ? "#7c3aed" : "rgba(255,255,255,0.06)",
+                      background: plan.isPopular ? "var(--t-brand)" : "rgba(255,255,255,0.06)",
                       color: plan.isPopular ? "#fff" : "rgba(255,255,255,0.42)",
                       boxShadow: plan.isPopular ? "0 4px 14px rgba(124,58,237,0.3)" : "none",
                     }}>{plan.cta}</button>
@@ -200,7 +200,7 @@ export function PricingClient() {
                         display: "flex", alignItems: "flex-start", gap: "8px",
                       }}>
                         {f.ok
-                          ? <Check size={12} color="#7c3aed" style={{ flexShrink: 0, marginTop: "2px" }} />
+                          ? <Check size={12} color="var(--t-brand)" style={{ flexShrink: 0, marginTop: "2px" }} />
                           : <Minus size={12} color="rgba(255,255,255,0.15)" style={{ flexShrink: 0, marginTop: "2px" }} />
                         }
                         {f.label}
@@ -215,21 +215,21 @@ export function PricingClient() {
       </section>
 
       {/* FAQ */}
-      <section style={{ background: "#0d0d14", padding: "76px 24px" }}>
+      <section style={{ background: "var(--t-bg-surface)", padding: "76px 24px" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
           <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
             <span className="badge-dot" />ЧАСТО СПРАШИВАЮТ
           </div>
           <h2 style={{
             fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
-            color: "#fff", letterSpacing: "-0.02em", marginBottom: "32px",
+            color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "32px",
           }}>
             Часто задаваемые вопросы
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
             {FAQS.map((faq, i) => (
               <div key={i} style={{
-                background: "#141418", border: "1px solid rgba(255,255,255,0.05)",
+                background: "var(--t-bg-card)", border: "1px solid rgba(255,255,255,0.05)",
                 borderRadius: "12px", overflow: "hidden",
               }}>
                 <button
@@ -241,7 +241,7 @@ export function PricingClient() {
                     fontFamily: "inherit", textAlign: "left",
                   }}
                 >
-                  <span style={{ fontSize: "14px", fontWeight: 500, color: "#fff" }}>{faq.q}</span>
+                  <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--t-btn-text)" }}>{faq.q}</span>
                   {openFaq === i
                     ? <Minus size={16} color="rgba(255,255,255,0.3)" style={{ flexShrink: 0 }} />
                     : <Plus size={16} color="rgba(255,255,255,0.25)" style={{ flexShrink: 0 }} />}
@@ -259,7 +259,7 @@ export function PricingClient() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "#07070d", padding: "88px 24px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: "var(--t-bg-base)", padding: "88px 24px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{
           position: "absolute", bottom: "-60px", left: "50%", transform: "translateX(-50%)",
           width: "580px", height: "320px",
@@ -271,7 +271,7 @@ export function PricingClient() {
             <span className="badge-dot" />14 ДНЕЙ БЕСПЛАТНО
           </div>
           <h2 style={{
-            fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "#fff",
+            fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "var(--t-btn-text)",
             lineHeight: 1.15, marginBottom: "12px",
           }}>
             Начни бесплатно<br />прямо сейчас
@@ -282,7 +282,7 @@ export function PricingClient() {
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="https://librachat.kz/auth">
               <button style={{
-                background: "#7c3aed", border: "none", color: "#fff",
+                background: "var(--t-brand)", border: "none", color: "var(--t-btn-text)",
                 borderRadius: "999px", padding: "14px 36px",
                 fontSize: "14px", fontWeight: 600, cursor: "pointer",
                 display: "flex", alignItems: "center", gap: "8px",

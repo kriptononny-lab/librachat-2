@@ -23,7 +23,7 @@ export function HeroSection() {
   return (
     <section
       style={{
-        background: "#07070d",
+        background: "var(--t-bg-base)",
         paddingTop: "92px",
         paddingBottom: "72px",
         textAlign: "center",
@@ -35,13 +35,13 @@ export function HeroSection() {
       <div style={{
         position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)",
         width: "700px", height: "420px",
-        background: "radial-gradient(ellipse, rgba(124,58,237,0.15) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse, var(--t-brand-orb) 0%, transparent 70%)",
         pointerEvents: "none", borderRadius: "50%",
       }} />
       <div style={{
         position: "absolute", top: "30px", right: "-60px",
         width: "280px", height: "280px",
-        background: "radial-gradient(ellipse, rgba(124,58,237,0.05) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse, var(--t-brand-orb) 0%, transparent 70%)",
         pointerEvents: "none", borderRadius: "50%",
       }} />
 
@@ -66,7 +66,7 @@ export function HeroSection() {
         }}>
           Привет, я{" "}
           <span style={{
-            background: "linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)",
+            background: "var(--t-gradient)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -105,13 +105,13 @@ export function HeroSection() {
           {/* Glow */}
           <div style={{
             position: "absolute", inset: "-4px", borderRadius: "22px",
-            background: "rgba(124,58,237,0.12)", filter: "blur(14px)", zIndex: 0,
+            background: "var(--t-brand-orb)", filter: "blur(14px)", zIndex: 0,
           }} />
           {/* Box */}
           <div style={{
             position: "relative", zIndex: 1,
-            background: "#111118",
-            border: "1px solid rgba(124,58,237,0.28)",
+            background: "var(--t-bg-card)",
+            border: "1px solid var(--t-border-pop)",
             borderRadius: "20px",
             padding: "21px 16px 13px 25px",
             boxShadow: "0 0 0 4px rgba(124,58,237,0.04), 0 28px 60px rgba(0,0,0,0.7)",
@@ -169,11 +169,11 @@ export function HeroSection() {
 <Link href="https://librachat.kz/auth">
                   <button style={{
                     width: "38px", height: "38px", borderRadius: "50%",
-                    background: "#7c3aed", border: "none", cursor: "pointer",
+                    background: "var(--t-brand)", border: "none", cursor: "pointer",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    boxShadow: "0 4px 14px rgba(124,58,237,0.4)",
+                    boxShadow: "0 4px 14px var(--t-brand-glow)",
                   }}>
-                    <SendHorizontal size={16} color="white" />
+                    <SendHorizontal size={16} color="var(--t-btn-text)" />
                   </button>
                 </Link>
               </div>

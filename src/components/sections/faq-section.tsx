@@ -16,7 +16,7 @@ export function FaqSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section style={{ background: "#0d0d14", padding: "76px 24px" }}>
+    <section style={{ background: "var(--t-bg-surface)", padding: "76px 24px" }}>
       <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
 
         <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
@@ -24,14 +24,14 @@ export function FaqSection() {
           ЧАСТО СПРАШИВАЮТ
         </div>
 
-        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "32px" }}>
+        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "32px" }}>
           Остались вопросы?
         </h2>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
           {FAQS.map((faq, i) => (
             <div key={i} style={{
-              background: "#141418", border: "1px solid rgba(255,255,255,0.05)",
+              background: "var(--t-bg-card)", border: "1px solid rgba(255,255,255,0.05)",
               borderRadius: "12px", overflow: "hidden",
             }}>
               <button onClick={() => setOpen(open === i ? null : i)} style={{
@@ -39,7 +39,7 @@ export function FaqSection() {
                 display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px",
                 background: "transparent", border: "none", cursor: "pointer", fontFamily: "inherit", textAlign: "left",
               }}>
-                <span style={{ fontSize: "14px", fontWeight: 500, color: "#fff" }}>{faq.q}</span>
+                <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--t-btn-text)" }}>{faq.q}</span>
                 {open === i
                   ? <Minus size={16} color="rgba(255,255,255,0.3)" style={{ flexShrink: 0 }} />
                   : <Plus size={16} color="rgba(255,255,255,0.25)" style={{ flexShrink: 0 }} />}

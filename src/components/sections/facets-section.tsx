@@ -33,7 +33,7 @@ export function FacetsSection() {
   const [active, setActive] = useState<TabId>("self");
 
   return (
-    <section style={{ background: "#0d0d14", padding: "76px 24px" }}>
+    <section style={{ background: "var(--t-bg-surface)", padding: "76px 24px" }}>
       <div style={{ maxWidth: "940px", margin: "0 auto", textAlign: "center" }}>
 
         <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
@@ -41,7 +41,7 @@ export function FacetsSection() {
           СДЕЛАЕТ МНОГОЕ ДЛЯ ТЕБЯ
         </div>
 
-        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>
+        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "10px" }}>
           Посмотри, что я могу сделать для тебя
         </h2>
         <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "28px" }}>
@@ -64,13 +64,13 @@ export function FacetsSection() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
           {CARDS[active].map((card) => (
             <div key={card.badge} style={{
-              background: "#141418", border: "1px solid rgba(255,255,255,0.06)",
+              background: "var(--t-bg-card)", border: "1px solid var(--t-border)",
               borderRadius: "18px", padding: "24px", textAlign: "left", display: "flex", flexDirection: "column",
             }}>
               <div style={{ fontSize: "11px", fontWeight: 600, color: "#9b7dff", marginBottom: "10px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                 {card.badge}
               </div>
-              <div style={{ fontSize: "15px", fontWeight: 700, color: "#fff", marginBottom: "10px", lineHeight: 1.35 }}>
+              <div style={{ fontSize: "15px", fontWeight: 700, color: "var(--t-btn-text)", marginBottom: "10px", lineHeight: 1.35 }}>
                 {card.title}
               </div>
               <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65, marginBottom: "14px", flexGrow: 1 }}>
@@ -80,11 +80,11 @@ export function FacetsSection() {
                 fontSize: "12px", color: "rgba(255,255,255,0.38)", lineHeight: 1.55,
                 borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "12px", marginBottom: "14px",
               }}>
-                <span style={{ color: "#a78bfa", fontWeight: 600 }}>Супер-сила: </span>{card.superpower}
+                <span style={{ color: "var(--t-brand-light)", fontWeight: 600 }}>Супер-сила: </span>{card.superpower}
               </div>
               <Link href={card.href} style={{
                 display: "inline-flex", alignItems: "center", gap: "6px",
-                fontSize: "12px", fontWeight: 600, color: "#7c3aed", textDecoration: "none",
+                fontSize: "12px", fontWeight: 600, color: "var(--t-brand)", textDecoration: "none",
               }}>
                 Попробовать →
               </Link>

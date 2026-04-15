@@ -99,7 +99,7 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
               position: "absolute", top: "0", left: "50%",
               transform: "translateX(-50%) translateY(-6px) rotate(45deg)",
               width: "12px", height: "12px",
-              background: "#141418",
+              background: "var(--t-bg-card)",
               border: "1px solid rgba(255,255,255,0.1)",
               borderBottom: "none", borderRight: "none",
               zIndex: 1,
@@ -107,7 +107,7 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
 
             <div style={{
               minWidth: "260px",
-              background: "#141418",
+              background: "var(--t-bg-card)",
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: "16px",
               padding: "8px",
@@ -127,7 +127,7 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
                     width: "36px", height: "36px", borderRadius: "10px", flexShrink: 0,
                     background: "rgba(124,58,237,0.1)", border: "1px solid rgba(124,58,237,0.2)",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#a78bfa",
+                    color: "var(--t-brand-light)",
                   }}>
                     {child.icon ? ICON_MAP[child.icon] : <MessageSquare size={18} />}
                   </div>
@@ -154,11 +154,11 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
                 display: "flex", alignItems: "center", justifyContent: "center",
               }}>
                 <Link href={item.href} style={{
-                  fontSize: "12px", color: "#7c3aed", textDecoration: "none", fontWeight: 500,
+                  fontSize: "12px", color: "var(--t-brand)", textDecoration: "none", fontWeight: 500,
                   display: "flex", alignItems: "center", gap: "4px",
                 }}
-                  onMouseEnter={e => (e.currentTarget.style.color = "#a78bfa")}
-                  onMouseLeave={e => (e.currentTarget.style.color = "#7c3aed")}
+                  onMouseEnter={e => (e.currentTarget.style.color = "var(--t-brand-light)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "var(--t-brand)")}
                 >
                   Смотреть всё →
                 </Link>
@@ -205,7 +205,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         position:"absolute", top:0, right:0, bottom:0,
         width:"min(300px, 85vw)",
         display:"flex", flexDirection:"column",
-        background:"#111118",
+        background:"var(--t-bg-card)",
         borderLeft:"1px solid rgba(255,255,255,0.1)",
         zIndex:1,
         overflowY:"auto",
@@ -264,7 +264,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             display:"flex", alignItems:"center", justifyContent:"center",
             padding:"13px", borderRadius:"999px", fontSize:"15px", fontWeight:600,
             color:"#fff", textDecoration:"none",
-            background:"#7c3aed", boxShadow:"0 4px 16px rgba(124,58,237,0.4)",
+            background:"var(--t-brand)", boxShadow:"0 4px 16px rgba(124,58,237,0.4)",
           }}>Начать бесплатно</Link>
         </div>
       </div>

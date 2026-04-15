@@ -57,6 +57,29 @@
 /* ===================================================
    Base
    =================================================== */
+
+/* ===================================================
+   Тема — переопределяется через JS (ThemeProvider)
+   =================================================== */
+:root {
+  --t-bg-base:    #07070d;
+  --t-bg-surface: #0d0d14;
+  --t-bg-card:    #141418;
+  --t-bg-card-pop:#160f28;
+  --t-brand:      #7c3aed;
+  --t-brand-light:#a78bfa;
+  --t-brand-hover:#8b4ff5;
+  --t-brand-glow: rgba(124,58,237,0.35);
+  --t-brand-orb:  rgba(124,58,237,0.14);
+  --t-border:     rgba(255,255,255,0.06);
+  --t-border-pop: rgba(124,58,237,0.3);
+  --t-btn-text:   #ffffff;
+  --t-gradient:   linear-gradient(135deg,#a78bfa,#7c3aed);
+  --t-dot:        #a78bfa;
+  --t-dot-glow:   rgba(167,139,250,0.7);
+  --t-heading-font: inherit;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -68,7 +91,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-bg-base);
+  background-color: var(--t-bg-base);
   color: var(--color-text-primary);
   line-height: 1.65;
   min-height: 100dvh;
@@ -123,7 +146,7 @@ body {
 
 /* Градиентный текст — только на одном слове в заголовке */
 .text-gradient {
-  background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+  background: var(--t-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -225,8 +248,8 @@ button, a[class*="rounded-full"], a[class*="rounded-"] {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #a78bfa;
-  box-shadow: 0 0 8px rgba(167,139,250,0.7);
+  background: var(--t-dot);
+  box-shadow: 0 0 8px var(--t-dot-glow);
   animation: badge-pulse 2s ease-in-out infinite;
   flex-shrink: 0;
 }

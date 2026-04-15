@@ -6,7 +6,7 @@ import { Zap } from "lucide-react";
 export function CtaSection() {
   return (
     <section style={{
-      background: "#0d0d14", padding: "88px 24px",
+      background: "var(--t-bg-surface)", padding: "88px 24px",
       textAlign: "center", position: "relative", overflow: "hidden",
     }}>
       <div style={{
@@ -21,7 +21,7 @@ export function CtaSection() {
           14 ДНЕЙ БЕСПЛАТНО
         </div>
         <h2 style={{
-          fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "#fff",
+          fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "var(--t-btn-text)",
           lineHeight: 1.15, letterSpacing: "-0.022em", marginBottom: "12px",
         }}>
           Попробуй LibraChat<br />для твоих задач
@@ -32,7 +32,7 @@ export function CtaSection() {
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <Link href="https://librachat.kz/auth">
             <button style={{
-              background: "#7c3aed", border: "none", color: "#fff",
+              background: "var(--t-brand)", border: "none", color: "var(--t-btn-text)",
               borderRadius: "999px", padding: "14px 36px",
               fontSize: "14px", fontWeight: 600, cursor: "pointer",
               display: "flex", alignItems: "center", gap: "8px",

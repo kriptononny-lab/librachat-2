@@ -35,7 +35,7 @@ const REVIEWS = [
 
 export function SocialProofSection() {
   return (
-    <section style={{ background: "#0d0d14", padding: "76px 24px" }}>
+    <section style={{ background: "var(--t-bg-surface)", padding: "76px 24px" }}>
       <div style={{ maxWidth: "940px", margin: "0 auto", textAlign: "center" }}>
 
         <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
@@ -43,7 +43,7 @@ export function SocialProofSection() {
           НАМ ДОВЕРЯЮТ
         </div>
 
-        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>
+        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "10px" }}>
           Те, кто уже со мной
         </h2>
         <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "36px" }}>
@@ -53,7 +53,7 @@ export function SocialProofSection() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
           {REVIEWS.map((r) => (
             <div key={r.name} style={{
-              background: "#141418", border: "1px solid rgba(255,255,255,0.06)",
+              background: "var(--t-bg-card)", border: "1px solid var(--t-border)",
               borderRadius: "18px", overflow: "hidden",
               display: "flex", flexDirection: "column",
             }}>
@@ -80,18 +80,18 @@ export function SocialProofSection() {
                   <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                     <div style={{
                       width: "32px", height: "32px", borderRadius: "50%",
-                      background: "rgba(124,58,237,0.1)",
+                      background: "var(--t-brand-orb)",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "11px", fontWeight: 700, color: "#a78bfa", flexShrink: 0,
+                      fontSize: "11px", fontWeight: 700, color: "var(--t-brand-light)", flexShrink: 0,
                     }}>
                       {r.initials}
                     </div>
                     <div>
-                      <div style={{ fontSize: "13px", fontWeight: 600, color: "#fff" }}>{r.name}</div>
+                      <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--t-btn-text)" }}>{r.name}</div>
                       <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>{r.role}</div>
                     </div>
                   </div>
-                  <Link href={r.href} style={{ fontSize: "12px", color: "#7c3aed", textDecoration: "none", fontWeight: 500 }}>
+                  <Link href={r.href} style={{ fontSize: "12px", color: "var(--t-brand)", textDecoration: "none", fontWeight: 500 }}>
                     Читать кейс →
                   </Link>
                 </div>

@@ -20,7 +20,7 @@ const STEPS = [
 
 export function StepsSection() {
   return (
-    <section style={{ background: "#07070d", padding: "76px 24px" }}>
+    <section style={{ background: "var(--t-bg-base)", padding: "76px 24px" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
 
         <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
@@ -30,7 +30,7 @@ export function StepsSection() {
 
         <h2 style={{
           fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
-          color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px",
+          color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "10px",
         }}>
           Начни работу за 2 минуты
         </h2>
@@ -43,22 +43,22 @@ export function StepsSection() {
             <div
               key={step.number}
               style={{
-                background: "#141418",
-                border: "1px solid rgba(255,255,255,0.06)",
+                background: "var(--t-bg-card)",
+                border: "1px solid var(--t-border)",
                 borderRadius: "18px", padding: "28px 22px",
                 textAlign: "left",
               }}
             >
               <div style={{
                 width: "36px", height: "36px", borderRadius: "50%",
-                background: "rgba(124,58,237,0.1)",
+                background: "var(--t-brand-orb)",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: "13px", fontWeight: 700, color: "#a78bfa",
+                fontSize: "13px", fontWeight: 700, color: "var(--t-brand-light)",
                 marginBottom: "16px",
               }}>
                 {step.number}
               </div>
-              <div style={{ fontSize: "15px", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>
+              <div style={{ fontSize: "15px", fontWeight: 700, color: "var(--t-btn-text)", marginBottom: "8px" }}>
                 {step.title}
               </div>
               <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65 }}>
