@@ -99,7 +99,7 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
               position: "absolute", top: "0", left: "50%",
               transform: "translateX(-50%) translateY(-6px) rotate(45deg)",
               width: "12px", height: "12px",
-              background: "#1e1d2e",
+              background: "#141418",
               border: "1px solid rgba(255,255,255,0.1)",
               borderBottom: "none", borderRight: "none",
               zIndex: 1,
@@ -107,7 +107,7 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
 
             <div style={{
               minWidth: "260px",
-              background: "#1e1d2e",
+              background: "#141418",
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: "16px",
               padding: "8px",
@@ -230,7 +230,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                 <Link href={item.href} style={{
                   display:"flex", alignItems:"center", padding:"12px 14px",
                   borderRadius:"10px", fontSize:"15px", fontWeight:500, textDecoration:"none",
-                  color: isActive ? "#fff" : "#c0b8d8",
+                  color: isActive ? "#fff" : "rgba(255,255,255,0.55)",
                   background: isActive ? "rgba(124,58,237,0.15)" : "transparent",
                 }}>
                   {item.label}
@@ -257,7 +257,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           <Link href="https://librachat.kz/auth" style={{
             display:"flex", alignItems:"center", justifyContent:"center",
             padding:"13px", borderRadius:"999px", fontSize:"15px", fontWeight:600,
-            color:"#f2f0ff", textDecoration:"none",
+            color:"#ffffff", textDecoration:"none",
             border:"1px solid rgba(255,255,255,0.16)",
           }}>Войти</Link>
           <Link href="https://librachat.kz/auth" style={{
@@ -293,7 +293,7 @@ export function Header() {
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 60,
           transition: "all 300ms ease",
           padding: scrolled ? "12px 0" : "16px 0",
-          background: scrolled ? "rgba(14,14,19,0.88)" : "transparent",
+          background: scrolled ? "rgba(7,7,13,0.92)" : "transparent",
           backdropFilter: scrolled ? "blur(20px)" : "none",
           borderBottom: scrolled ? "1px solid rgba(255,255,255,0.07)" : "none",
         }}

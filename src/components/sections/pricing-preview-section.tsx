@@ -49,7 +49,7 @@ export function PricingPreviewSection() {
         }}>
           Ты хочешь такой результат?
         </h2>
-        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.42)", marginBottom: "36px" }}>
+        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "36px" }}>
           14 дней бесплатно — без карты, без обязательств
         </p>
 

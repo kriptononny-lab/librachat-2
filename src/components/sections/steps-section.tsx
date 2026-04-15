@@ -34,7 +34,7 @@ export function StepsSection() {
         }}>
           Начни работу за 2 минуты
         </h2>
-        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.42)", marginBottom: "36px" }}>
+        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "36px" }}>
           Никаких сложных настроек — просто зайди и начни
         </p>
 
@@ -61,7 +61,7 @@ export function StepsSection() {
               <div style={{ fontSize: "15px", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>
                 {step.title}
               </div>
-              <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.42)", lineHeight: 1.65 }}>
+              <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65 }}>
                 {step.desc}
               </div>
             </div>

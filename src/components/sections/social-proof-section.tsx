@@ -46,7 +46,7 @@ export function SocialProofSection() {
         <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>
           Те, кто уже со мной
         </h2>
-        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.42)", marginBottom: "36px" }}>
+        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "36px" }}>
           Реальные результаты реальных людей
         </p>
 

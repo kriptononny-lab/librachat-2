@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { BarChart2, FileText, Languages, Code2, Paperclip, Image, Mic, CornerDownLeft, SendHorizontal } from "lucide-react";
+import { BarChart2, FileText, Languages, Code2, Paperclip, Image, Mic, SendHorizontal } from "lucide-react";
 
 const QUICK_ACTIONS = [
   { icon: BarChart2, label: "Анализ данных" },
@@ -79,7 +79,7 @@ export function HeroSection() {
         <p style={{
           fontSize: "19px",
           fontWeight: 600,
-          color: "rgba(255,255,255,0.55)",
+          color: "rgba(255,255,255,0.58)",
           marginBottom: "14px",
         }}>
           Закрою лишние вкладки в твоём браузере.
@@ -89,7 +89,7 @@ export function HeroSection() {
         <p style={{
           fontSize: "15px",
           lineHeight: 1.75,
-          color: "rgba(255,255,255,0.45)",
+          color: "rgba(255,255,255,0.52)",
           maxWidth: "480px",
           margin: "0 auto 44px",
         }}>
@@ -166,13 +166,7 @@ export function HeroSection() {
               </div>
               {/* Right */}
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <span style={{
-                  fontSize: "11px", color: "rgba(255,255,255,0.15)",
-                  display: "flex", alignItems: "center", gap: "4px",
-                }}>
-                  <CornerDownLeft size={11} /> Enter
-                </span>
-                <Link href="https://librachat.kz/auth">
+<Link href="https://librachat.kz/auth">
                   <button style={{
                     width: "38px", height: "38px", borderRadius: "50%",
                     background: "#7c3aed", border: "none", cursor: "pointer",
@@ -196,12 +190,12 @@ export function HeroSection() {
             <button
               key={label}
               style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.12)",
                 borderRadius: "999px",
-                padding: "5px 13px",
-                fontSize: "11px",
-                color: "rgba(255,255,255,0.32)",
+                padding: "6px 14px",
+                fontSize: "12px",
+                color: "rgba(255,255,255,0.6)",
                 cursor: "pointer",
                 display: "flex", alignItems: "center", gap: "5px",
               }}
@@ -229,7 +223,7 @@ export function HeroSection() {
               <span style={{ fontSize: "17px", fontWeight: 700, color: "#fff", display: "block", marginBottom: "4px" }}>
                 {value}
               </span>
-              <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.32)", display: "block", lineHeight: 1.45 }}>
+              <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.38)", display: "block", lineHeight: 1.45 }}>
                 {label}
               </span>
             </div>
@@ -243,8 +237,8 @@ export function HeroSection() {
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "transparent",
-              border: "1px solid rgba(255,255,255,0.1)",
-              color: "rgba(255,255,255,0.4)",
+              border: "1px solid rgba(255,255,255,0.14)",
+              color: "rgba(255,255,255,0.55)",
               borderRadius: "999px", padding: "10px 24px",
               fontSize: "13px", textDecoration: "none",
               transition: "all 0.15s",
