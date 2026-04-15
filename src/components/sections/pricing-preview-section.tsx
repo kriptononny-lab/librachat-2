@@ -1,254 +1,126 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { Check } from "lucide-react";
-import type { StrapiPlan } from "@/lib/strapi";
 
-const STATIC_PLANS = [
+const PLANS = [
   {
-    planId: "free",
-    name: "Первые шаги без риска",
-    subtitle: "Попробовать без риска",
-    priceMonthly: 0,
-    priceAnnual: 0,
+    name: "Бесплатно",
+    price: "0 ₽",
+    per: "/мес",
+    features: ["50 сообщений в день", "Базовая модель ИИ", "Без VPN"],
+    cta: "Начать бесплатно",
+    href: "https://librachat.kz/auth",
     isPopular: false,
-    ctaLabel: "Начать бесплатно",
-    ctaHref: "https://librachat.kz/auth",
-    features: [
-      { label: "20 сообщений в день", ok: true },
-      { label: "Базовый диалог", ok: true },
-      { label: "5 загрузок файлов", ok: true },
-    ],
   },
   {
-    planId: "pro",
-    name: "Полная мощность без ограничений",
-    subtitle: "Полная мощность без ограничений",
-    priceMonthly: 990,
-    priceAnnual: 790,
+    name: "Pro",
+    price: "990 ₽",
+    per: "/мес",
+    features: ["Безлимитные сообщения", "Продвинутая модель ИИ", "Файлы до 50 МБ"],
+    cta: "Попробовать Pro",
+    href: "https://librachat.kz/auth",
     isPopular: true,
-    ctaLabel: "Начать бесплатно",
-    ctaHref: "https://librachat.kz/auth",
-    features: [
-      { label: "Безлимитные запросы", ok: true },
-      { label: "Файлы до 50 МБ", ok: true },
-      { label: "Анализ документов", ok: true },
-      { label: "Работа без VPN", ok: true },
-    ],
   },
   {
-    planId: "team",
-    name: "Маркетинг-отдел для вашей команды",
-    subtitle: "Маркетинг-отдел для команды",
-    priceMonthly: 1990,
-    priceAnnual: 1590,
+    name: "Бизнес",
+    price: "2 990 ₽",
+    per: "/мес",
+    features: ["Всё из Pro", "Все модели ИИ", "API + поддержка"],
+    cta: "Связаться с нами",
+    href: "/contact?type=business",
     isPopular: false,
-    ctaLabel: "Обсудить команду",
-    ctaHref: "https://librachat.kz/auth",
-    features: [
-      { label: "Всё из Pro плана", ok: true },
-      { label: "Управление командой", ok: true },
-      { label: "Приоритетная поддержка", ok: true },
-      { label: "Корпоративный биллинг", ok: true },
-    ],
   },
 ];
 
-function fmt(n: number) {
-  return n === 0 ? "0 ₽" : n.toLocaleString("ru-RU") + " ₽";
-}
-
-export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
-  const items = plans && plans.length > 0 ? plans : STATIC_PLANS;
-  const [active, setActive] = useState(
-    items.find((p) => p.isPopular)?.planId ?? items[0]?.planId ?? "pro"
-  );
-  const plan = items.find((p) => p.planId === active) ?? items[0];
-
+export function PricingPreviewSection() {
   return (
-    <section
-      style={{
-        padding: "120px 0",
-        background: "#07060e",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-      }}
-    >
-      <div className="container-site" style={{ maxWidth: "780px" }}>
-        <div style={{ textAlign: "center", marginBottom: "52px" }}>
-          <div className="section-badge" style={{ marginBottom: "16px" }}>
-            <span className="badge-dot" />
-            ТАРИФЫ
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(28px, 3vw, 44px)",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
-              color: "#ffffff",
-            }}
-          >
-            Ты хочешь <span className="text-gradient">такой результат?</span>
-          </h2>
-          <p
-            style={{
-              marginTop: "14px",
-              fontSize: "16px",
-              color: "rgba(255,255,255,0.38)",
-              lineHeight: 1.6,
-            }}
-          >
-            Выбери — и сразу увидишь разницу
-          </p>
+    <section style={{ background: "#07070d", padding: "76px 24px" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
+
+        <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
+          <span className="badge-dot" />
+          ТАРИФЫ
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            marginBottom: "28px",
-          }}
-        >
-          {items.map((p) => (
-            <button
-              key={p.planId}
-              onClick={() => setActive(p.planId)}
+
+        <h2 style={{
+          fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
+          color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px",
+        }}>
+          Ты хочешь такой результат?
+        </h2>
+        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.42)", marginBottom: "36px" }}>
+          14 дней бесплатно — без карты, без обязательств
+        </p>
+
+        <div style={{
+          display: "grid", gridTemplateColumns: "repeat(3,1fr)",
+          gap: "14px", alignItems: "stretch", marginBottom: "24px",
+        }}>
+          {PLANS.map((plan) => (
+            <div
+              key={plan.name}
               style={{
-                padding: "14px 20px",
-                borderRadius: "14px",
-                fontSize: "15px",
-                fontWeight: 500,
-                textAlign: "left",
-                cursor: "pointer",
-                border:
-                  active === p.planId
-                    ? "1px solid rgba(124,58,237,0.5)"
-                    : "1px solid rgba(255,255,255,0.07)",
-                background:
-                  active === p.planId ? "rgba(124,58,237,0.1)" : "rgba(20,19,28,0.5)",
-                color: active === p.planId ? "#ffffff" : "rgba(255,255,255,0.38)",
-                transition: "all 180ms ease",
+                background: plan.isPopular ? "#160f28" : "#141418",
+                border: plan.isPopular ? "1px solid rgba(124,58,237,0.3)" : "1px solid rgba(255,255,255,0.06)",
+                borderRadius: "20px", padding: "24px 20px",
+                display: "flex", flexDirection: "column",
+                position: "relative", transition: "transform 0.2s",
               }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "none"; }}
             >
-              {p.subtitle || p.name}
-            </button>
+              {plan.isPopular && (
+                <div style={{
+                  position: "absolute", top: "-11px", left: "50%", transform: "translateX(-50%)",
+                  background: "#7c3aed", color: "#fff", fontSize: "9px", fontWeight: 700,
+                  padding: "3px 13px", borderRadius: "999px", whiteSpace: "nowrap",
+                  boxShadow: "0 3px 10px rgba(124,58,237,0.35)",
+                }}>
+                  ПОПУЛЯРНЫЙ
+                </div>
+              )}
+              <div style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.4)", marginBottom: "10px" }}>
+                {plan.name}
+              </div>
+              <div style={{ fontSize: "28px", fontWeight: 800, color: "#fff", lineHeight: 1, marginBottom: "16px" }}>
+                {plan.price}
+                <span style={{ fontSize: "12px", fontWeight: 400, color: "rgba(255,255,255,0.25)" }}>{plan.per}</span>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px", flexGrow: 1, marginBottom: "16px" }}>
+                {plan.features.map((f) => (
+                  <div key={f} style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: "7px" }}>
+                    <Check size={12} color="#7c3aed" style={{ flexShrink: 0 }} />
+                    {f}
+                  </div>
+                ))}
+              </div>
+              <Link href={plan.href}>
+                <button style={{
+                  display: "block", width: "100%", textAlign: "center",
+                  borderRadius: "999px", padding: "10px",
+                  fontSize: "12px", fontWeight: 600, cursor: "pointer",
+                  border: "none", fontFamily: "inherit", transition: "all 0.15s",
+                  background: plan.isPopular ? "#7c3aed" : "rgba(255,255,255,0.06)",
+                  color: plan.isPopular ? "#fff" : "rgba(255,255,255,0.4)",
+                }}>
+                  {plan.cta}
+                </button>
+              </Link>
+            </div>
           ))}
         </div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            style={{
-              borderRadius: "20px",
-              padding: "36px",
-              background: plan.isPopular
-                ? "rgba(124,58,237,0.07)"
-                : "rgba(14,13,25,0.92)",
-              border: plan.isPopular
-                ? "1px solid rgba(124,58,237,0.4)"
-                : "1px solid rgba(255,255,255,0.09)",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "flex-start",
-                justifyContent: "space-between",
-                gap: "32px",
-              }}
-            >
-              <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
-                  <span
-                    style={{
-                      fontSize: "clamp(36px, 4vw, 52px)",
-                      fontWeight: 800,
-                      color: "#ffffff",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    {fmt(plan.priceMonthly)}
-                  </span>
-                  {plan.priceMonthly > 0 && (
-                    <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.38)" }}>в месяц</span>
-                  )}
-                  {plan.priceMonthly === 0 && (
-                    <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.38)" }}>
-                      навсегда бесплатно
-                    </span>
-                  )}
-                </div>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                  {(plan.features ?? [])
-                    .filter((f) => f.ok)
-                    .map((f) => (
-                      <li
-                        key={f.label}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "10px",
-                          fontSize: "15px",
-                          color: "rgba(255,255,255,0.38)",
-                        }}
-                      >
-                        <Check size={16} color="#22c55e" style={{ flexShrink: 0 }} />
-                        {f.label}
-                      </li>
-                    ))}
-                </ul>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "12px",
-                  flexShrink: 0,
-                }}
-              >
-                <Link
-                  href={plan.ctaHref}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: "14px 32px",
-                    borderRadius: "999px",
-                    fontSize: "15px",
-                    fontWeight: 600,
-                    textDecoration: "none",
-                    background: plan.isPopular ? "#7c3aed" : "transparent",
-                    color: plan.isPopular ? "#fff" : "#ffffff",
-                    border: plan.isPopular ? "none" : "1px solid rgba(255,255,255,0.18)",
-                    boxShadow: plan.isPopular
-                      ? "0 4px 20px rgba(124,58,237,0.4)"
-                      : "none",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {plan.ctaLabel}
-                </Link>
-                <Link
-                  href="/pricing"
-                  style={{
-                    fontSize: "13px",
-                    textAlign: "center",
-                    color: "rgba(255,255,255,0.22)",
-                    textDecoration: "none",
-                  }}
-                >
-                  Сравнить все тарифы →
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+
+        <Link href="/pricing" style={{
+          display: "inline-flex", alignItems: "center", gap: "7px",
+          background: "transparent", border: "1px solid rgba(255,255,255,0.1)",
+          color: "rgba(255,255,255,0.38)", borderRadius: "999px",
+          padding: "10px 24px", fontSize: "13px", textDecoration: "none",
+          transition: "all 0.15s",
+        }}>
+          Сравнить все тарифы подробно →
+        </Link>
+
       </div>
     </section>
   );

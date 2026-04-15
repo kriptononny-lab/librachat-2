@@ -1,186 +1,75 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import type { StrapiFaq } from "@/lib/strapi";
+import { Plus, Minus } from "lucide-react";
 
-const STATIC_FAQ = [
-  {
-    question: "Работает без VPN?",
-    answer:
-      "Да. Я работаю в России напрямую — никаких VPN, дополнительных настроек и задержек. Просто открыл и работаешь.",
-  },
-  {
-    question: "Я придумываю факты или работаю по данным?",
-    answer:
-      "Строго по данным. Если ты загружаешь файл или документ — я отвечаю только на основе его содержимого. Никаких галлюцинаций и выдуманных цифр.",
-  },
-  {
-    question: "Чем ты отличаешься от ChatGPT?",
-    answer:
-      "Я понимаю российский менталитет и бизнес-реалии. Работаю без VPN. Помню контекст в рамках проекта — не нужно заново объяснять кто ты и что продаёшь. Интерфейс и поддержка на русском.",
-  },
-  {
-    question: "Можно ли использовать для работы с большими файлами?",
-    answer:
-      "Да. Загружай Excel на 900 строк, PDF-отчёты, презентации — я проанализирую и выдам выводы с 100% точностью без выдумок.",
-  },
-  {
-    question: "Как начать? Нужна ли карта?",
-    answer:
-      "Нет. Регистрация занимает 30 секунд — только email и пароль. Карта не нужна. 14 дней пробного периода бесплатно на любом тарифе.",
-  },
-  {
-    question: "Есть мобильное приложение?",
-    answer:
-      "Да, есть приложения для iOS и Android. Работают без VPN — так же, как веб-версия.",
-  },
+const FAQS = [
+  { q: "Работает без VPN?", a: "Да, LibraChat работает на территории России без VPN — это одно из наших ключевых преимуществ." },
+  { q: "Чем отличаешься от ChatGPT?", a: "LibraChat работает без VPN, отвечает на русском языке с пониманием местного контекста, не хранит данные на серверах OpenAI." },
+  { q: "Нужна ли карта для старта?", a: "Нет, начать бесплатно можно без привязки карты. Просто email и пароль." },
+  { q: "Можно работать с большими файлами?", a: "На тарифе Pro — файлы до 50 МБ, на Бизнес — до 500 МБ. Поддерживаются PDF, Word, Excel, изображения." },
 ];
 
-export function FaqSection({
-  faqs,
-  texts = {},
-}: {
-  faqs?: StrapiFaq[];
-  texts?: Record<string, string>;
-}) {
-  const badge = texts["faq.badge"] ?? "ЧАСТО СПРАШИВАЮТ";
-  const title = texts["faq.title"] ?? "Остались вопросы?";
-  const subtitle = texts["faq.subtitle"] ?? "Ответы на самые популярные вопросы";
+export function FaqSection() {
   const [open, setOpen] = useState<number | null>(null);
 
-  const items =
-    faqs && faqs.length > 0
-      ? faqs.map((f) => ({ question: f.question, answer: f.answer }))
-      : STATIC_FAQ;
-
   return (
-    <section
-      style={{
-        padding: "120px 0",
-        background: "#100f1d",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-      }}
-    >
-      <div className="container-site" style={{ maxWidth: "780px" }}>
-        <div style={{ textAlign: "center", marginBottom: "52px" }}>
-          <div className="section-badge" style={{ marginBottom: "16px" }}>
-            <span className="badge-dot" />
-            {badge}
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(28px, 3vw, 44px)",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
-              color: "#ffffff",
-            }}
-          >
-            {title}
-          </h2>
-          <p
-            style={{
-              marginTop: "14px",
-              fontSize: "16px",
-              color: "rgba(255,255,255,0.38)",
-              lineHeight: 1.6,
-            }}
-          >
-            {subtitle}
-          </p>
+    <section style={{ background: "#0d0d14", padding: "76px 24px" }}>
+      <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
+
+        <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
+          <span className="badge-dot" />
+          ЧАСТО СПРАШИВАЮТ
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          {items.map((item, i) => (
-            <motion.div
+
+        <h2 style={{
+          fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
+          color: "#fff", letterSpacing: "-0.02em", marginBottom: "32px",
+        }}>
+          Остались вопросы?
+        </h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+          {FAQS.map((faq, i) => (
+            <div
               key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.3, delay: i * 0.04 }}
               style={{
-                borderRadius: "16px",
-                overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "#141418",
+                border: "1px solid rgba(255,255,255,0.05)",
+                borderRadius: "12px", overflow: "hidden",
+                transition: "background 0.15s",
               }}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "16px",
-                  padding: "20px 24px",
-                  textAlign: "left",
-                  cursor: "pointer",
-                  border: "none",
-                  background:
-                    open === i ? "rgba(124,58,237,0.07)" : "rgba(14,13,25,0.84)",
-                  transition: "background 150ms ease",
+                  width: "100%", padding: "16px 20px",
+                  display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px",
+                  background: "transparent", border: "none", cursor: "pointer",
+                  fontFamily: "inherit", textAlign: "left",
                 }}
               >
-                <span
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: 600,
-                    color: "#ffffff",
-                    lineHeight: 1.4,
-                    flex: 1,
-                  }}
-                >
-                  {item.question}
+                <span style={{ fontSize: "14px", fontWeight: 500, color: "#fff" }}>
+                  {faq.q}
                 </span>
-                <motion.span
-                  animate={{ rotate: open === i ? 45 : 0 }}
-                  transition={{ duration: 0.18 }}
-                  style={{
-                    flexShrink: 0,
-                    width: "30px",
-                    height: "30px",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "20px",
-                    fontWeight: 300,
-                    lineHeight: 1,
-                    background: "rgba(124,58,237,0.12)",
-                    border: "1px solid rgba(124,58,237,0.25)",
-                    color: "#8a7cf8",
-                  }}
-                >
-                  +
-                </motion.span>
+                {open === i
+                  ? <Minus size={16} color="rgba(255,255,255,0.3)" style={{ flexShrink: 0 }} />
+                  : <Plus size={16} color="rgba(255,255,255,0.25)" style={{ flexShrink: 0 }} />
+                }
               </button>
-              <AnimatePresence initial={false}>
-                {open === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.22, ease: "easeInOut" }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <p
-                      style={{
-                        padding: "20px 24px",
-                        fontSize: "15px",
-                        lineHeight: 1.8,
-                        color: "rgba(255,255,255,0.38)",
-                        borderTop: "1px solid rgba(255,255,255,0.06)",
-                        background: "rgba(8,7,16,0.55)",
-                      }}
-                    >
-                      {item.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {open === i && (
+                <div style={{
+                  padding: "0 20px 16px",
+                  fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65,
+                  textAlign: "left",
+                }}>
+                  {faq.a}
+                </div>
+              )}
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -1,208 +1,73 @@
 "use client";
 
-import { motion } from "motion/react";
-import Link from "next/link";
-import { UserPlus, MessageCircle, Sparkles, ArrowRight } from "lucide-react";
+const STEPS = [
+  {
+    number: "1",
+    title: "Зарегистрируйтесь",
+    desc: "Создайте аккаунт за 30 секунд — без карты, только email и пароль.",
+  },
+  {
+    number: "2",
+    title: "Задайте вопрос",
+    desc: "Напишите любой вопрос на русском — я понимаю контекст и отвечаю сразу.",
+  },
+  {
+    number: "3",
+    title: "Получите результат",
+    desc: "Деловой текст, код, анализ или перевод — мгновенно и без галлюцинаций.",
+  },
+];
 
-export function StepsSection({ texts = {} }: { texts?: Record<string, string> }) {
-  const badge = texts["steps.badge"] ?? "3 ПРОСТЫХ ШАГА";
-  const title = texts["steps.title"] ?? "Начни работу за 2 минуты";
-  const subtitle =
-    texts["steps.subtitle"] ?? "Никаких сложных настроек — просто зайди и начни";
-  const STEPS = [
-    {
-      number: "1",
-      Icon: UserPlus,
-      title: texts["steps.1.title"] ?? "Зарегистрируйтесь",
-      desc:
-        texts["steps.1.desc"] ??
-        "Создайте аккаунт за 30 секунд. Никаких данных карты — просто email и пароль.",
-    },
-    {
-      number: "2",
-      Icon: MessageCircle,
-      title: texts["steps.2.title"] ?? "Задайте вопрос",
-      desc:
-        texts["steps.2.desc"] ??
-        "Напишите любой вопрос на русском — я понимаю контекст и отвечаю сразу.",
-    },
-    {
-      number: "3",
-      Icon: Sparkles,
-      title: texts["steps.3.title"] ?? "Получите результат",
-      desc:
-        texts["steps.3.desc"] ??
-        "Деловой текст, код, анализ или перевод — готово мгновенно.",
-    },
-  ];
+export function StepsSection() {
   return (
-    <section
-      style={{
-        padding: "120px 0",
-        background: "#07060e",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-      }}
-    >
-      <div className="container-site">
-        {/* Заголовок */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          style={{ textAlign: "center", marginBottom: "80px" }}
-        >
-          <div className="section-badge" style={{ marginBottom: "16px" }}>
-            <span className="badge-dot" />
-            {badge}
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(28px, 3vw, 46px)",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
-              color: "#f2f0ff",
-            }}
-          >
-            {title}
-          </h2>
-          <p
-            style={{
-              marginTop: "14px",
-              fontSize: "16px",
-              color: "rgba(255,255,255,0.38)",
-              maxWidth: "360px",
-              margin: "14px auto 0",
-              lineHeight: 1.65,
-            }}
-          >
-            {subtitle}
-          </p>
-        </motion.div>
+    <section style={{ background: "#07070d", padding: "76px 24px" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
 
-        {/* Шаги */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
-            gap: "40px",
-            position: "relative",
-          }}
-        >
-          {STEPS.map((step, i) => (
-            <motion.div
+        <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
+          <span className="badge-dot" />
+          3 ПРОСТЫХ ШАГА
+        </div>
+
+        <h2 style={{
+          fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
+          color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px",
+        }}>
+          Начни работу за 2 минуты
+        </h2>
+        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.42)", marginBottom: "36px" }}>
+          Никаких сложных настроек — просто зайди и начни
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "14px" }}>
+          {STEPS.map((step) => (
+            <div
               key={step.number}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.14 }}
-              className="step-col"
               style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textAlign: "center",
-                position: "relative",
+                background: "#141418",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderRadius: "18px", padding: "28px 22px",
+                textAlign: "left",
               }}
             >
-              {/* Иконка + номер — вместе */}
-              <div style={{ position: "relative", zIndex: 1, marginBottom: "28px" }}>
-                {/* Кружок с иконкой */}
-                <div
-                  style={{
-                    width: "68px",
-                    height: "68px",
-                    borderRadius: "50%",
-                    background: "rgba(124,58,237,0.12)",
-                    border: "1.5px solid rgba(124,58,237,0.3)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 0 24px rgba(124,58,237,0.08)",
-                  }}
-                >
-                  <step.Icon size={28} color="#a78bfa" strokeWidth={1.5} />
-                </div>
-
-                {/* Номер — маленький бейдж снизу-справа */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "-4px",
-                    right: "-4px",
-                    width: "22px",
-                    height: "22px",
-                    borderRadius: "50%",
-                    background: "#7c3aed",
-                    border: "2px solid #07060e",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    color: "#fff",
-                  }}
-                >
-                  {step.number}
-                </div>
+              <div style={{
+                width: "36px", height: "36px", borderRadius: "50%",
+                background: "rgba(124,58,237,0.1)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "13px", fontWeight: 700, color: "#a78bfa",
+                marginBottom: "16px",
+              }}>
+                {step.number}
               </div>
-
-              <h3
-                style={{
-                  fontSize: "18px",
-                  fontWeight: 700,
-                  color: "#f2f0ff",
-                  marginBottom: "10px",
-                  lineHeight: 1.3,
-                }}
-              >
+              <div style={{ fontSize: "15px", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>
                 {step.title}
-              </h3>
-              <p
-                style={{
-                  fontSize: "14px",
-                  lineHeight: 1.75,
-                  color: "#7a7490",
-                  maxWidth: "220px",
-                }}
-              >
+              </div>
+              <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.42)", lineHeight: 1.65 }}>
                 {step.desc}
-              </p>
-            </motion.div>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.5 }}
-          style={{ textAlign: "center", marginTop: "60px" }}
-        >
-          <Link
-            href="https://librachat.kz/auth"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "14px 32px",
-              borderRadius: "999px",
-              background: "#7c3aed",
-              color: "#fff",
-              fontSize: "15px",
-              fontWeight: 600,
-              textDecoration: "none",
-              boxShadow: "0 4px 24px rgba(124,58,237,0.4)",
-            }}
-          >
-            Начать бесплатно <ArrowRight size={16} />
-          </Link>
-          <p style={{ marginTop: "12px", fontSize: "13px", color: "rgba(255,255,255,0.22)" }}>
-            30 секунд · Без карты · Без VPN
-          </p>
-        </motion.div>
       </div>
     </section>
   );

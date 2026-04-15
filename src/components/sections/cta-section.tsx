@@ -1,140 +1,61 @@
 "use client";
 
-import { motion } from "motion/react";
 import Link from "next/link";
+import { Zap } from "lucide-react";
 
-export function CtaSection({ texts = {} }: { texts?: Record<string, string> }) {
-  const badge = texts["cta.badge"] ?? "14 ДНЕЙ БЕСПЛАТНО";
-  const title = texts["cta.title"] ?? "Попробуй LibraChat для твоих задач";
+export function CtaSection() {
   return (
-    <section
-      style={{
-        padding: "120px 0",
-        background: "#07060e",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-      }}
-    >
-      <div className="container-site">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          style={{
-            position: "relative",
-            overflow: "hidden",
-            borderRadius: "28px",
-            padding: "80px 48px",
-            textAlign: "center",
-            background: "rgba(14,13,25,0.97)",
-            border: "1px solid rgba(124,58,237,0.2)",
-          }}
-        >
-          {/* Линия свечения сверху */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              height: "1px",
-              background:
-                "linear-gradient(90deg, transparent, rgba(124,58,237,0.6), transparent)",
-              pointerEvents: "none",
-            }}
-          />
-
-          <div
-            style={{
-              position: "relative",
-              zIndex: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "20px",
-            }}
-          >
-            <div className="section-badge"><span className="badge-dot" />{badge}</div>
-
-            <h2
-              style={{
-                fontSize: "clamp(32px, 4vw, 56px)",
-                fontWeight: 800,
-                letterSpacing: "-0.02em",
-                lineHeight: 1.15,
-                color: "#ffffff",
-                maxWidth: "600px",
-              }}
-            >
-              {title}
-            </h2>
-
-            <p
-              style={{
-                fontSize: "16px",
-                color: "rgba(255,255,255,0.38)",
-                maxWidth: "380px",
-                lineHeight: 1.7,
-              }}
-            >
-              14 дней бесплатно — без карты, без обязательств. Отмена в любой момент.
-            </p>
-
-            <div
-              className="btn-pair"
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: "12px",
-                marginTop: "8px",
-              }}
-            >
-              <Link
-                href="https://librachat.kz/auth"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "14px 36px",
-                  borderRadius: "999px",
-                  background: "#7c3aed",
-                  color: "#fff",
-                  fontSize: "16px",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  boxShadow: "0 4px 24px rgba(124,58,237,0.45)",
-                  transition: "transform 150ms ease",
-                }}
-              >
-                Начать бесплатно
-              </Link>
-              <Link
-                href="https://librachat.kz/auth"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "14px 36px",
-                  borderRadius: "999px",
-                  background: "transparent",
-                  color: "#ffffff",
-                  fontSize: "16px",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  transition: "border-color 150ms ease",
-                }}
-              >
-                Запросить демо
-              </Link>
-            </div>
-
-            <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.22)", marginTop: "4px" }}>
-              Уже более 1 480 пользователей доверяют LibraChat · Поддержка 24/7
-            </p>
-          </div>
-        </motion.div>
+    <section style={{
+      background: "#0d0d14", padding: "88px 24px",
+      textAlign: "center", position: "relative", overflow: "hidden",
+    }}>
+      <div style={{
+        position: "absolute", bottom: "-60px", left: "50%", transform: "translateX(-50%)",
+        width: "580px", height: "320px",
+        background: "radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%)",
+        pointerEvents: "none", borderRadius: "50%",
+      }} />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <div className="section-badge" style={{ justifyContent: "center", marginBottom: "20px" }}>
+          <span className="badge-dot" />
+          14 ДНЕЙ БЕСПЛАТНО
+        </div>
+        <h2 style={{
+          fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "#fff",
+          lineHeight: 1.15, letterSpacing: "-0.022em", marginBottom: "12px",
+        }}>
+          Попробуй LibraChat<br />для твоих задач
+        </h2>
+        <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.4)", marginBottom: "30px" }}>
+          14 дней бесплатно — без карты, без обязательств.
+        </p>
+        <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+          <Link href="https://librachat.kz/auth">
+            <button style={{
+              background: "#7c3aed", border: "none", color: "#fff",
+              borderRadius: "999px", padding: "14px 36px",
+              fontSize: "14px", fontWeight: 600, cursor: "pointer",
+              display: "flex", alignItems: "center", gap: "8px",
+              fontFamily: "inherit", boxShadow: "0 4px 20px rgba(124,58,237,0.35)",
+            }}>
+              <Zap size={16} /> Начать бесплатно
+            </button>
+          </Link>
+          <Link href="/contact">
+            <button style={{
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "rgba(255,255,255,0.45)",
+              borderRadius: "999px", padding: "14px 36px",
+              fontSize: "14px", cursor: "pointer", fontFamily: "inherit",
+            }}>
+              Запросить демо
+            </button>
+          </Link>
+        </div>
+        <div style={{ marginTop: "18px", fontSize: "12px", color: "rgba(255,255,255,0.15)" }}>
+          Уже более 1 480 пользователей доверяют LibraChat · Поддержка 24/7
+        </div>
       </div>
     </section>
   );

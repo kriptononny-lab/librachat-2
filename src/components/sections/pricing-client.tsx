@@ -1,447 +1,212 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
-import { Check, X, Minus } from "lucide-react";
-import type { StrapiPlan, StrapiFaq } from "@/lib/strapi";
+import { Check, Minus, Plus, Zap } from "lucide-react";
 
-const STATIC_PLANS: StrapiPlan[] = [
+const PLANS = [
   {
-    id: 1,
-    planId: "free",
-    subtitle: "Хочу попробовать",
-    name: "Первые шаги без риска",
-    priceMonthly: 0,
-    priceAnnual: 0,
-    ctaLabel: "Начать бесплатно",
-    ctaHref: "https://librachat.kz/auth",
+    id: "free",
+    name: "Бесплатно",
+    desc: "Чтобы попробовать и убедиться",
+    monthPrice: "0",
+    yearPrice: "0",
+    annualSaving: null,
+    cta: "Начать бесплатно",
+    href: "https://librachat.kz/auth",
     isPopular: false,
-    highlight: null,
-    order: 1,
     features: [
-      { label: "20 сообщений в день", ok: true },
-      { label: "Базовый диалог", ok: true },
-      { label: "5 загрузок файлов в день", ok: true },
-      { label: "Приоритетный ИИ", ok: false },
-      { label: "Расширенные модели", ok: false },
-      { label: "API-доступ", ok: false },
-    ],
-  },
-  {
-    id: 2,
-    planId: "pro",
-    subtitle: "Хочу этот результат",
-    name: "Полная мощность без ограничений",
-    priceMonthly: 990,
-    priceAnnual: 790,
-    ctaLabel: "Начать бесплатно",
-    ctaHref: "https://librachat.kz/auth",
-    isPopular: true,
-    highlight: "Лучший выбор",
-    order: 2,
-    features: [
-      { label: "Безлимитные запросы", ok: true },
-      { label: "Файлы до 50 МБ", ok: true },
-      { label: "Анализ документов и таблиц", ok: true },
+      { label: "50 сообщений в день", ok: true },
+      { label: "Базовая модель ИИ", ok: true },
+      { label: "Веб-интерфейс", ok: true },
+      { label: "История чатов 7 дней", ok: true },
       { label: "Работа без VPN", ok: true },
-      { label: "Приоритетный ИИ", ok: true },
-      { label: "API-доступ", ok: false },
+      { label: "Загрузка файлов", ok: false },
+      { label: "Приоритетный доступ", ok: false },
+      { label: "Мобильное приложение", ok: false },
     ],
   },
   {
-    id: 3,
-    planId: "team",
-    subtitle: "Помогите такой команде",
-    name: "Маркетинг-отдел для вашей команды",
-    priceMonthly: 1990,
-    priceAnnual: 1590,
-    ctaLabel: "Обсудить команду",
-    ctaHref: "https://librachat.kz/auth",
-    isPopular: false,
-    highlight: null,
-    order: 3,
+    id: "pro",
+    name: "Pro",
+    desc: "Для тех, кто работает каждый день",
+    monthPrice: "990",
+    yearPrice: "790",
+    annualSaving: "экономия 2 400 ₽/год",
+    cta: "Попробовать Pro",
+    href: "https://librachat.kz/auth",
+    isPopular: true,
     features: [
-      { label: "Всё из Pro плана", ok: true },
-      { label: "Управление командой", ok: true },
-      { label: "Корпоративный биллинг", ok: true },
-      { label: "Приоритетная поддержка", ok: true },
+      { label: "Безлимитные сообщения", ok: true },
+      { label: "Продвинутая модель ИИ", ok: true },
+      { label: "Все платформы", ok: true },
+      { label: "История без ограничений", ok: true },
+      { label: "Работа без VPN", ok: true },
+      { label: "Файлы до 50 МБ", ok: true },
+      { label: "Приоритетный доступ", ok: true },
+      { label: "Мобильное приложение", ok: true },
+    ],
+  },
+  {
+    id: "business",
+    name: "Бизнес",
+    desc: "Для команд и компаний",
+    monthPrice: "2 990",
+    yearPrice: "2 490",
+    annualSaving: "экономия 6 000 ₽/год",
+    cta: "Связаться с нами",
+    href: "/contact?type=business",
+    isPopular: false,
+    features: [
+      { label: "Всё из Pro", ok: true },
+      { label: "Все модели ИИ", ok: true },
+      { label: "Файлы до 500 МБ", ok: true },
+      { label: "Корпоративные настройки", ok: true },
       { label: "Выделенные мощности", ok: true },
-      { label: "API-доступ + Webhook", ok: true },
+      { label: "API-доступ", ok: true },
+      { label: "Приоритетная поддержка", ok: true },
+      { label: "Персональный менеджер", ok: true },
     ],
   },
 ];
 
-const STATIC_FAQ = [
-  {
-    question: "Можно ли сменить тариф в любое время?",
-    answer:
-      "Да, вы можете перейти на более высокий тариф немедленно. При переходе на более низкий изменения вступят в силу в следующем расчётном периоде.",
-  },
-  {
-    question: "Что происходит после окончания пробного периода?",
-    answer:
-      "Аккаунт автоматически переходит на бесплатный тариф. Данные сохраняются. Никаких списаний без вашего подтверждения.",
-  },
-  {
-    question: "Какие способы оплаты принимаются?",
-    answer:
-      "Банковские карты Visa, Mastercard, МИР, а также ЮКасса. Безналичная оплата для юрлиц доступна по запросу.",
-  },
-  {
-    question: "Есть ли скидки для студентов и НКО?",
-    answer:
-      "Да, скидка 50% для студентов, преподавателей и некоммерческих организаций. Для получения обратитесь в поддержку.",
-  },
-  {
-    question: "Можно ли получить возврат средств?",
-    answer:
-      "Полный возврат в течение 7 дней после оплаты при отсутствии активного использования.",
-  },
-  {
-    question: "Как работает тариф для команды?",
-    answer:
-      "Оплачивается за количество участников. Минимум — 3 участника. Администратор управляет командой и правами доступа.",
-  },
+const FAQS = [
+  { q: "Можно ли отменить подписку?", a: "Да, в любой момент из настроек аккаунта. Доступ сохраняется до конца оплаченного периода." },
+  { q: "Работает ли без VPN?", a: "Да, LibraChat работает на территории России без VPN — это одно из наших ключевых преимуществ." },
+  { q: "Нужна ли карта для старта?", a: "Нет. Начать работу можно бесплатно — без привязки карты." },
+  { q: "Есть ли скидка для команд?", a: "Да, тариф «Бизнес» рассчитан на команды. Свяжитесь с нами для индивидуального предложения." },
+  { q: "Можно перейти с одного тарифа на другой?", a: "Да, в любое время. При повышении разница пересчитывается пропорционально." },
+  { q: "Что такое приоритетный доступ?", a: "Ваши запросы обрабатываются быстрее в часы пиковой нагрузки." },
 ];
 
-const COMPARISON = [
-  {
-    group: "ДИАЛОГ",
-    rows: [
-      { label: "Сообщений в день", free: "20", pro: "∞", team: "∞" },
-      { label: "История диалогов", free: "7 дней", pro: "90 дней", team: "Бесконечно" },
-      { label: "Приоритетный доступ", free: false, pro: false, team: true },
-    ],
-  },
-  {
-    group: "ФАЙЛЫ",
-    rows: [
-      { label: "Загрузка файлов", free: "1/день", pro: "150/день", team: "Без лимита" },
-      { label: "Размер файла", free: "5 МБ", pro: "50 МБ", team: "500 МБ" },
-    ],
-  },
-  {
-    group: "КОМАНДА",
-    rows: [
-      { label: "Общее пространство", free: false, pro: false, team: true },
-      { label: "Управление ролями", free: false, pro: false, team: true },
-    ],
-  },
-  {
-    group: "ИНТЕГРАЦИИ И API",
-    rows: [
-      { label: "API-доступ", free: false, pro: false, team: false },
-      { label: "Webhook-интеграции", free: false, pro: false, team: true },
-    ],
-  },
-];
-
-function fmt(n: number) {
-  return n === 0 ? "0 ₽" : n.toLocaleString("ru-RU") + " ₽";
-}
-
-function CellValue({ value }: { value: string | boolean }) {
-  if (value === true)
-    return (
-      <Check size={15} color="#22c55e" style={{ margin: "0 auto", display: "block" }} />
-    );
-  if (value === false)
-    return (
-      <Minus size={15} color="#3a3650" style={{ margin: "0 auto", display: "block" }} />
-    );
-  return (
-    <span
-      style={{
-        display: "block",
-        textAlign: "center",
-        fontSize: "13px",
-        color: "rgba(255,255,255,0.38)",
-      }}
-    >
-      {value as string}
-    </span>
-  );
-}
-
-const heading = {
-  fontSize: "clamp(28px, 3vw, 44px)",
-  fontWeight: 800,
-  letterSpacing: "-0.02em",
-  lineHeight: 1.15,
-  color: "#ffffff",
-} as React.CSSProperties;
-
-export function PricingClient({
-  plans,
-  faqs,
-}: {
-  plans?: StrapiPlan[];
-  faqs?: StrapiFaq[];
-}) {
-  const [annual, setAnnual] = useState(false);
+export function PricingClient() {
+  const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const PLANS = plans && plans.length > 0 ? plans : STATIC_PLANS;
-  const FAQ =
-    faqs && faqs.length > 0
-      ? faqs.map((f) => ({ question: f.question, answer: f.answer }))
-      : STATIC_FAQ;
-
   return (
-    <>
-      {/* ── HERO ── */}
-      <section
-        style={{ padding: "100px 0 80px", background: "#07060e", textAlign: "center" }}
-      >
-        <div
-          className="container-site"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "20px",
-          }}
-        >
-          <div className="section-badge"><span className="badge-dot" />ТАРИФНЫЕ ПЛАНЫ</div>
-          <h1
-            style={{ ...heading, fontSize: "clamp(36px, 5vw, 64px)", maxWidth: "600px" }}
-          >
-            Выберите подходящий
-            <br />
-            <span style={{ color: "#ffffff" }}>тариф для вас</span>
-          </h1>
-          <p
-            style={{
-              fontSize: "16px",
-              color: "rgba(255,255,255,0.38)",
-              maxWidth: "400px",
-              lineHeight: 1.7,
-            }}
-          >
-            Начните бесплатно — обновите план когда будете готовы. Без скрытых платежей.
-          </p>
-          <div
-            style={{
-              display: "inline-flex",
-              padding: "4px",
-              borderRadius: "999px",
-              gap: "4px",
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              marginTop: "8px",
-            }}
-          >
-            {["Ежемесячно", "Ежегодно"].map((label, i) => {
-              const active = annual === (i === 1);
-              return (
-                <button
-                  key={label}
-                  onClick={() => setAnnual(i === 1)}
-                  style={{
-                    position: "relative",
-                    padding: "8px 20px",
-                    borderRadius: "999px",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    border: "none",
-                    cursor: "pointer",
-                    background: active ? "rgba(124,58,237,0.18)" : "transparent",
-                    color: active ? "#ffffff" : "rgba(255,255,255,0.38)",
-                    outline: active ? "1px solid rgba(124,58,237,0.35)" : "none",
-                    transition: "all 200ms ease",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  {label}
-                  {i === 1 && (
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        fontWeight: 600,
-                        padding: "2px 7px",
-                        borderRadius: "999px",
-                        background: "rgba(34,197,94,0.15)",
-                        color: "#22c55e",
-                        border: "1px solid rgba(34,197,94,0.25)",
-                      }}
-                    >
-                      −20%
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+    <div style={{ background: "#07070d" }}>
 
-      {/* ── КАРТОЧКИ ── */}
-      <section
-        style={{
-          padding: "80px 0 120px",
-          background: "#100f1d",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-        }}
-      >
-        <div className="container-site">
-          <div style={{ textAlign: "center", marginBottom: "52px" }}>
-            <div className="section-badge" style={{ marginBottom: "16px" }}>
-              <span className="badge-dot" />
-              ТАРИФЫ
-            </div>
-            <h2 style={heading}>
-              Выбери <span style={{ color: "#ffffff" }}>свой результат</span>
-            </h2>
-            <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.38)", marginTop: "12px" }}>
-              Тарифы — один инструмент для всех задач. Расти вместе с ним.
-            </p>
+      {/* HERO */}
+      <section style={{ padding: "92px 24px 72px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div style={{
+          position: "absolute", top: "-80px", left: "50%", transform: "translateX(-50%)",
+          width: "600px", height: "360px",
+          background: "radial-gradient(ellipse, rgba(124,58,237,0.14) 0%, transparent 70%)",
+          pointerEvents: "none", borderRadius: "50%",
+        }} />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <div className="section-badge" style={{ justifyContent: "center", marginBottom: "20px" }}>
+            <span className="badge-dot" />ТАРИФЫ
           </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-              gap: "20px",
-            }}
-          >
+          <h1 style={{
+            fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 800, color: "#fff",
+            lineHeight: 1.1, letterSpacing: "-0.025em", marginBottom: "12px",
+          }}>
+            Простые и{" "}
+            <span style={{
+              background: "linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+            }}>честные цены</span>
+          </h1>
+          <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.42)", marginBottom: "36px" }}>
+            14 дней бесплатно на любом тарифе — без карты, без обязательств
+          </p>
+
+          {/* Toggle */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "52px" }}>
+            <span style={{ fontSize: "13px", color: isYearly ? "rgba(255,255,255,0.3)" : "#fff", fontWeight: isYearly ? 400 : 600, cursor: "pointer" }}
+              onClick={() => setIsYearly(false)}>
+              Ежемесячно
+            </span>
+            <div
+              onClick={() => setIsYearly(!isYearly)}
+              style={{
+                width: "44px", height: "24px", background: "#7c3aed",
+                borderRadius: "999px", position: "relative", cursor: "pointer", flexShrink: 0,
+              }}
+            >
+              <div style={{
+                width: "18px", height: "18px", background: "#fff", borderRadius: "50%",
+                position: "absolute", top: "3px",
+                left: isYearly ? "calc(100% - 21px)" : "3px",
+                transition: "left 0.2s",
+              }} />
+            </div>
+            <span style={{ fontSize: "13px", color: isYearly ? "#fff" : "rgba(255,255,255,0.3)", fontWeight: isYearly ? 600 : 400, cursor: "pointer" }}
+              onClick={() => setIsYearly(true)}>
+              Ежегодно
+            </span>
+            <span style={{
+              background: "rgba(124,58,237,0.12)", border: "1px solid rgba(124,58,237,0.25)",
+              color: "#a78bfa", fontSize: "11px", fontWeight: 600,
+              padding: "3px 10px", borderRadius: "999px",
+            }}>−20%</span>
+          </div>
+
+          {/* Cards */}
+          <div style={{
+            display: "grid", gridTemplateColumns: "repeat(3,1fr)",
+            gap: "16px", maxWidth: "880px", margin: "0 auto", alignItems: "stretch",
+          }}>
             {PLANS.map((plan) => {
-              const price = annual ? plan.priceAnnual : plan.priceMonthly;
-              const planKey = plan.planId ?? String(plan.id);
+              const price = isYearly ? plan.yearPrice : plan.monthPrice;
+              const saving = isYearly ? plan.annualSaving : null;
               return (
                 <div
-                  key={planKey}
+                  key={plan.id}
                   style={{
-                    position: "relative",
-                    display: "flex",
-                    flexDirection: "column",
-                    padding: "28px",
-                    borderRadius: "20px",
-                    background: plan.isPopular
-                      ? "rgba(124,58,237,0.07)"
-                      : "rgba(14,13,25,0.88)",
-                    border: plan.isPopular
-                      ? "1px solid rgba(124,58,237,0.45)"
-                      : "1px solid rgba(255,255,255,0.08)",
-                    boxShadow: plan.isPopular ? "0 0 40px rgba(124,58,237,0.1)" : "none",
+                    background: plan.isPopular ? "#160f28" : "#141418",
+                    border: plan.isPopular ? "1px solid rgba(124,58,237,0.3)" : "1px solid rgba(255,255,255,0.06)",
+                    borderRadius: "22px", padding: "28px 22px",
+                    display: "flex", flexDirection: "column",
+                    position: "relative", transition: "transform 0.2s",
                   }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "none"; }}
                 >
-                  {plan.isPopular && plan.highlight && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "-14px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        padding: "4px 16px",
-                        borderRadius: "999px",
-                        fontSize: "12px",
-                        fontWeight: 600,
-                        color: "#fff",
-                        background: "#7c3aed",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {plan.highlight}
-                    </div>
+                  {plan.isPopular && (
+                    <div style={{
+                      position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)",
+                      background: "#7c3aed", color: "#fff", fontSize: "10px", fontWeight: 700,
+                      padding: "3px 16px", borderRadius: "999px", whiteSpace: "nowrap",
+                      boxShadow: "0 4px 12px rgba(124,58,237,0.35)",
+                    }}>ПОПУЛЯРНЫЙ</div>
                   )}
-                  <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.38)", marginBottom: "6px" }}>
-                    {plan.subtitle}
-                  </p>
-                  <h3
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 700,
-                      color: "#ffffff",
-                      lineHeight: 1.35,
-                      marginBottom: "20px",
-                    }}
-                  >
-                    {plan.name}
-                  </h3>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "baseline",
-                      gap: "8px",
-                      marginBottom: "24px",
-                    }}
-                  >
-                    <AnimatePresence mode="wait">
-                      <motion.span
-                        key={`${planKey}-${annual}`}
-                        initial={{ opacity: 0, y: -6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 6 }}
-                        transition={{ duration: 0.16 }}
-                        style={{
-                          fontSize: "clamp(32px, 3vw, 44px)",
-                          fontWeight: 800,
-                          color: "#ffffff",
-                          letterSpacing: "-0.02em",
-                        }}
-                      >
-                        {fmt(price)}
-                      </motion.span>
-                    </AnimatePresence>
-                    {price > 0 && (
-                      <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.38)" }}>/ мес</span>
-                    )}
+                  <div style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.4)", marginBottom: "4px" }}>{plan.name}</div>
+                  <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.2)", marginBottom: "20px" }}>{plan.desc}</div>
+                  <div style={{ fontSize: "36px", fontWeight: 800, color: "#fff", lineHeight: 1, marginBottom: "4px" }}>
+                    {price} ₽<span style={{ fontSize: "12px", fontWeight: 400, color: "rgba(255,255,255,0.22)" }}>/мес</span>
                   </div>
-                  <ul
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "12px",
-                      marginBottom: "28px",
-                      flex: 1,
-                    }}
-                  >
-                    {(plan.features ?? []).map((f) => (
-                      <li
-                        key={f.label}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "10px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {f.ok ? (
-                          <Check size={15} color="#22c55e" style={{ flexShrink: 0 }} />
-                        ) : (
-                          <X size={15} color="#3a3650" style={{ flexShrink: 0 }} />
-                        )}
-                        <span style={{ color: f.ok ? "rgba(255,255,255,0.38)" : "#3a3650" }}>
-                          {f.label}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={plan.ctaHref}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "13px",
-                      borderRadius: "999px",
-                      fontSize: "14px",
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      background: plan.isPopular ? "#7c3aed" : "transparent",
-                      color: plan.isPopular ? "#fff" : "#ffffff",
-                      border: plan.isPopular
-                        ? "none"
-                        : "1px solid rgba(255,255,255,0.16)",
-                      boxShadow: plan.isPopular
-                        ? "0 4px 20px rgba(124,58,237,0.4)"
-                        : "none",
-                    }}
-                  >
-                    {plan.ctaLabel}
+                  <div style={{ fontSize: "11px", color: saving ? "#a78bfa" : "transparent", marginBottom: "20px", height: "16px" }}>
+                    {saving ?? ""}
+                  </div>
+                  <Link href={plan.href}>
+                    <button style={{
+                      display: "block", width: "100%", textAlign: "center",
+                      borderRadius: "999px", padding: "12px",
+                      fontSize: "13px", fontWeight: 600, cursor: "pointer",
+                      marginBottom: "22px", border: "none", fontFamily: "inherit",
+                      background: plan.isPopular ? "#7c3aed" : "rgba(255,255,255,0.06)",
+                      color: plan.isPopular ? "#fff" : "rgba(255,255,255,0.42)",
+                      boxShadow: plan.isPopular ? "0 4px 14px rgba(124,58,237,0.3)" : "none",
+                    }}>{plan.cta}</button>
                   </Link>
+                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", marginBottom: "18px" }} />
+                  <div style={{ display: "flex", flexDirection: "column", gap: "10px", flexGrow: 1 }}>
+                    {plan.features.map((f) => (
+                      <div key={f.label} style={{
+                        fontSize: "12px",
+                        color: f.ok ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.14)",
+                        display: "flex", alignItems: "flex-start", gap: "8px",
+                      }}>
+                        {f.ok
+                          ? <Check size={12} color="#7c3aed" style={{ flexShrink: 0, marginTop: "2px" }} />
+                          : <Minus size={12} color="rgba(255,255,255,0.15)" style={{ flexShrink: 0, marginTop: "2px" }} />
+                        }
+                        {f.label}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               );
             })}
@@ -449,349 +214,100 @@ export function PricingClient({
         </div>
       </section>
 
-      {/* ── ТАБЛИЦА ── */}
-      <section
-        style={{
-          padding: "120px 0",
-          background: "#07060e",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-        }}
-      >
-        <div className="container-site">
-          <div style={{ textAlign: "center", marginBottom: "52px" }}>
-            <div className="section-badge" style={{ marginBottom: "16px" }}>
-              <span className="badge-dot" />
-              СРАВНЕНИЕ
-            </div>
-            <h2 style={heading}>Что входит в каждый план</h2>
-            <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.38)", marginTop: "12px" }}>
-              Подробное сравнение всех возможностей
-            </p>
+      {/* FAQ */}
+      <section style={{ background: "#0d0d14", padding: "76px 24px" }}>
+        <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
+          <div className="section-badge" style={{ justifyContent: "center", marginBottom: "18px" }}>
+            <span className="badge-dot" />ЧАСТО СПРАШИВАЮТ
           </div>
-          <div className="pricing-table-wrap">
-            <table
-              style={{ width: "100%", minWidth: "560px", borderCollapse: "collapse" }}
-            >
-              <thead>
-                <tr
-                  style={{
-                    background: "rgba(14,13,25,0.97)",
-                    borderBottom: "1px solid rgba(255,255,255,0.07)",
-                  }}
-                >
-                  <th
-                    style={{
-                      textAlign: "left",
-                      padding: "16px 20px",
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      color: "rgba(255,255,255,0.38)",
-                      width: "40%",
-                    }}
-                  >
-                    ФУНКЦИИ
-                  </th>
-                  {["Бесплатно", "ПРО", "Команда"].map((col, i) => (
-                    <th
-                      key={col}
-                      style={{
-                        textAlign: "center",
-                        padding: "16px",
-                        fontSize: "14px",
-                        fontWeight: 600,
-                        color: i === 1 ? "#a78bfa" : "rgba(255,255,255,0.38)",
-                      }}
-                    >
-                      {col}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARISON.map((group) => (
-                  <>
-                    <tr
-                      key={`g-${group.group}`}
-                      style={{
-                        background: "rgba(255,255,255,0.02)",
-                        borderTop: "1px solid rgba(255,255,255,0.06)",
-                      }}
-                    >
-                      <td
-                        colSpan={4}
-                        style={{
-                          padding: "10px 20px",
-                          fontSize: "11px",
-                          fontWeight: 700,
-                          letterSpacing: "0.08em",
-                          color: "rgba(255,255,255,0.22)",
-                        }}
-                      >
-                        {group.group}
-                      </td>
-                    </tr>
-                    {group.rows.map((row, ri) => (
-                      <tr
-                        key={`${group.group}-${ri}`}
-                        style={{
-                          borderTop: "1px solid rgba(255,255,255,0.04)",
-                          background: ri % 2 === 0 ? "rgba(20,19,28,0.5)" : "transparent",
-                        }}
-                      >
-                        <td
-                          style={{
-                            padding: "14px 20px",
-                            fontSize: "14px",
-                            color: "rgba(255,255,255,0.38)",
-                          }}
-                        >
-                          {row.label}
-                        </td>
-                        <td style={{ padding: "14px 16px" }}>
-                          <CellValue value={row.free} />
-                        </td>
-                        <td
-                          style={{
-                            padding: "14px 16px",
-                            background: "rgba(124,58,237,0.04)",
-                          }}
-                        >
-                          <CellValue value={row.pro} />
-                        </td>
-                        <td style={{ padding: "14px 16px" }}>
-                          <CellValue value={row.team} />
-                        </td>
-                      </tr>
-                    ))}
-                  </>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ ── */}
-      <section
-        style={{
-          padding: "120px 0",
-          background: "#100f1d",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-        }}
-      >
-        <div className="container-site" style={{ maxWidth: "780px" }}>
-          <div style={{ textAlign: "center", marginBottom: "52px" }}>
-            <div className="section-badge" style={{ marginBottom: "16px" }}>
-              <span className="badge-dot" />
-              ЧАСТО ЗАДАЮТ
-            </div>
-            <h2 style={heading}>Остались вопросы?</h2>
-            <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.38)", marginTop: "12px" }}>
-              Ответы на самые популярные вопросы о тарифах и оплате
-            </p>
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-              gap: "12px",
-            }}
-          >
-            {FAQ.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  borderRadius: "16px",
-                  overflow: "hidden",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                }}
-              >
+          <h2 style={{
+            fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
+            color: "#fff", letterSpacing: "-0.02em", marginBottom: "32px",
+          }}>
+            Часто задаваемые вопросы
+          </h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+            {FAQS.map((faq, i) => (
+              <div key={i} style={{
+                background: "#141418", border: "1px solid rgba(255,255,255,0.05)",
+                borderRadius: "12px", overflow: "hidden",
+              }}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   style={{
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    justifyContent: "space-between",
-                    gap: "12px",
-                    padding: "18px 20px",
-                    textAlign: "left",
-                    cursor: "pointer",
-                    border: "none",
-                    background:
-                      openFaq === i ? "rgba(124,58,237,0.06)" : "rgba(14,13,25,0.75)",
+                    width: "100%", padding: "16px 20px",
+                    display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px",
+                    background: "transparent", border: "none", cursor: "pointer",
+                    fontFamily: "inherit", textAlign: "left",
                   }}
                 >
-                  <span
-                    style={{
-                      fontSize: "15px",
-                      fontWeight: 600,
-                      color: "#ffffff",
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {item.question}
-                  </span>
-                  <motion.span
-                    animate={{ rotate: openFaq === i ? 45 : 0 }}
-                    transition={{ duration: 0.18 }}
-                    style={{
-                      flexShrink: 0,
-                      width: "26px",
-                      height: "26px",
-                      borderRadius: "50%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "18px",
-                      background: "rgba(124,58,237,0.12)",
-                      border: "1px solid rgba(124,58,237,0.25)",
-                      color: "#a78bfa",
-                    }}
-                  >
-                    +
-                  </motion.span>
+                  <span style={{ fontSize: "14px", fontWeight: 500, color: "#fff" }}>{faq.q}</span>
+                  {openFaq === i
+                    ? <Minus size={16} color="rgba(255,255,255,0.3)" style={{ flexShrink: 0 }} />
+                    : <Plus size={16} color="rgba(255,255,255,0.25)" style={{ flexShrink: 0 }} />}
                 </button>
-                <AnimatePresence initial={false}>
-                  {openFaq === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.22 }}
-                      style={{ overflow: "hidden" }}
-                    >
-                      <p
-                        style={{
-                          padding: "16px 20px",
-                          fontSize: "14px",
-                          lineHeight: 1.75,
-                          color: "rgba(255,255,255,0.38)",
-                          borderTop: "1px solid rgba(255,255,255,0.06)",
-                          background: "rgba(8,7,16,0.55)",
-                        }}
-                      >
-                        {item.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {openFaq === i && (
+                  <div style={{
+                    padding: "0 20px 16px", fontSize: "13px",
+                    color: "rgba(255,255,255,0.45)", lineHeight: 1.65, textAlign: "left",
+                  }}>{faq.a}</div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── ФИНАЛЬНЫЙ CTA ── */}
-      <section
-        style={{
-          padding: "80px 0",
-          background: "#07060e",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-        }}
-      >
-        <div className="container-site">
-          <div
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              borderRadius: "24px",
-              padding: "clamp(40px, 6vw, 80px) clamp(20px, 4vw, 40px)",
-              textAlign: "center",
-              background: "rgba(14,13,25,0.97)",
-              border: "1px solid rgba(124,58,237,0.2)",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: "1px",
-                background:
-                  "linear-gradient(90deg,transparent,rgba(124,58,237,0.6),transparent)",
-              }}
-            />
-            <div
-              style={{
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "20px",
-              }}
-            >
-              <div className="section-badge"><span className="badge-dot" />НАЧНИТЕ УЖЕ СЕГОДНЯ</div>
-              <h2 style={{ ...heading, fontSize: "clamp(32px, 4vw, 56px)" }}>
-                14 дней бесплатно
-                <br />
-                <span style={{ color: "#ffffff" }}>на любом тарифе</span>
-              </h2>
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.38)",
-                  maxWidth: "360px",
-                  lineHeight: 1.7,
-                }}
-              >
-                Попробуйте все возможности LibraChat без ограничений. Карта не нужна.
-              </p>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "12px",
-                  flexWrap: "wrap",
-                  justifyContent: "center",
-                  marginTop: "8px",
-                  width: "100%",
-                  padding: "0 16px",
-                }}
-              >
-                <Link
-                  href="https://librachat.kz/auth"
-                  style={{
-                    padding: "14px 32px",
-                    borderRadius: "999px",
-                    background: "#7c3aed",
-                    color: "#fff",
-                    fontSize: "15px",
-                    fontWeight: 600,
-                    textDecoration: "none",
-                    boxShadow: "0 4px 20px rgba(124,58,237,0.4)",
-                    flex: "1 1 auto",
-                    textAlign: "center",
-                    minWidth: "200px",
-                    maxWidth: "280px",
-                  }}
-                >
-                  Начать бесплатно
-                </Link>
-                <Link
-                  href="https://librachat.kz/auth"
-                  style={{
-                    padding: "14px 32px",
-                    borderRadius: "999px",
-                    background: "transparent",
-                    color: "#ffffff",
-                    fontSize: "15px",
-                    fontWeight: 600,
-                    textDecoration: "none",
-                    border: "1px solid rgba(255,255,255,0.16)",
-                    flex: "1 1 auto",
-                    textAlign: "center",
-                    minWidth: "200px",
-                    maxWidth: "280px",
-                  }}
-                >
-                  Для продаж
-                </Link>
-              </div>
-            </div>
+      {/* CTA */}
+      <section style={{ background: "#07070d", padding: "88px 24px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div style={{
+          position: "absolute", bottom: "-60px", left: "50%", transform: "translateX(-50%)",
+          width: "580px", height: "320px",
+          background: "radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%)",
+          pointerEvents: "none", borderRadius: "50%",
+        }} />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <div className="section-badge" style={{ justifyContent: "center", marginBottom: "20px" }}>
+            <span className="badge-dot" />14 ДНЕЙ БЕСПЛАТНО
+          </div>
+          <h2 style={{
+            fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: "#fff",
+            lineHeight: 1.15, marginBottom: "12px",
+          }}>
+            Начни бесплатно<br />прямо сейчас
+          </h2>
+          <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.4)", marginBottom: "30px" }}>
+            Без карты, без обязательств. Отмена в любой момент.
+          </p>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="https://librachat.kz/auth">
+              <button style={{
+                background: "#7c3aed", border: "none", color: "#fff",
+                borderRadius: "999px", padding: "14px 36px",
+                fontSize: "14px", fontWeight: 600, cursor: "pointer",
+                display: "flex", alignItems: "center", gap: "8px",
+                fontFamily: "inherit", boxShadow: "0 4px 20px rgba(124,58,237,0.35)",
+              }}>
+                <Zap size={16} /> Начать бесплатно
+              </button>
+            </Link>
+            <Link href="/contact?type=business">
+              <button style={{
+                background: "transparent", border: "1px solid rgba(255,255,255,0.12)",
+                color: "rgba(255,255,255,0.45)", borderRadius: "999px",
+                padding: "14px 36px", fontSize: "14px",
+                cursor: "pointer", fontFamily: "inherit",
+              }}>
+                Связаться с нами
+              </button>
+            </Link>
+          </div>
+          <div style={{ marginTop: "18px", fontSize: "12px", color: "rgba(255,255,255,0.15)" }}>
+            Уже более 1 480 пользователей доверяют LibraChat
           </div>
         </div>
       </section>
-    </>
+
+    </div>
   );
 }
