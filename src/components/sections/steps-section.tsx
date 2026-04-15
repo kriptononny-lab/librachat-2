@@ -30,7 +30,7 @@ export function StepsSection() {
 
         <h2 style={{
           fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
-          color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "10px",
+          color: "#ffffff", letterSpacing: "-0.02em", marginBottom: "10px",
         }}>
           Начни работу за 2 минуты
         </h2>
@@ -58,7 +58,7 @@ export function StepsSection() {
               }}>
                 {step.number}
               </div>
-              <div style={{ fontSize: "15px", fontWeight: 700, color: "var(--t-btn-text)", marginBottom: "8px" }}>
+              <div style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", marginBottom: "8px" }}>
                 {step.title}
               </div>
               <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65 }}>

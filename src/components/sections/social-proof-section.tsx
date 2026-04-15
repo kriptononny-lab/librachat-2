@@ -43,7 +43,7 @@ export function SocialProofSection() {
           НАМ ДОВЕРЯЮТ
         </div>
 
-        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "10px" }}>
+        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em", marginBottom: "10px" }}>
           Те, кто уже со мной
         </h2>
         <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "36px" }}>
@@ -87,7 +87,7 @@ export function SocialProofSection() {
                       {r.initials}
                     </div>
                     <div>
-                      <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--t-btn-text)" }}>{r.name}</div>
+                      <div style={{ fontSize: "13px", fontWeight: 600, color: "#ffffff" }}>{r.name}</div>
                       <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>{r.role}</div>
                     </div>
                   </div>

@@ -174,7 +174,7 @@ export function PricingClient() {
                   )}
                   <div style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.4)", marginBottom: "4px" }}>{plan.name}</div>
                   <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.2)", marginBottom: "20px" }}>{plan.desc}</div>
-                  <div style={{ fontSize: "36px", fontWeight: 800, color: "var(--t-btn-text)", lineHeight: 1, marginBottom: "4px" }}>
+                  <div style={{ fontSize: "36px", fontWeight: 800, color: "#ffffff", lineHeight: 1, marginBottom: "4px" }}>
                     {price} ₽<span style={{ fontSize: "12px", fontWeight: 400, color: "rgba(255,255,255,0.22)" }}>/мес</span>
                   </div>
                   <div style={{ fontSize: "11px", color: saving ? "var(--t-brand-light)" : "transparent", marginBottom: "20px", height: "16px" }}>
@@ -222,7 +222,7 @@ export function PricingClient() {
           </div>
           <h2 style={{
             fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
-            color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "32px",
+            color: "#ffffff", letterSpacing: "-0.02em", marginBottom: "32px",
           }}>
             Часто задаваемые вопросы
           </h2>

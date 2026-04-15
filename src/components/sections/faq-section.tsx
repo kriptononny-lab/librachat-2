@@ -24,7 +24,7 @@ export function FaqSection() {
           ЧАСТО СПРАШИВАЮТ
         </div>
 
-        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "32px" }}>
+        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em", marginBottom: "32px" }}>
           Остались вопросы?
         </h2>
 

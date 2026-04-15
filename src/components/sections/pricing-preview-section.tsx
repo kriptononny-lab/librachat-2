@@ -45,7 +45,7 @@ export function PricingPreviewSection() {
 
         <h2 style={{
           fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800,
-          color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "10px",
+          color: "#ffffff", letterSpacing: "-0.02em", marginBottom: "10px",
         }}>
           Ты хочешь такой результат?
         </h2>
@@ -83,7 +83,7 @@ export function PricingPreviewSection() {
               <div style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.4)", marginBottom: "10px" }}>
                 {plan.name}
               </div>
-              <div style={{ fontSize: "28px", fontWeight: 800, color: "var(--t-btn-text)", lineHeight: 1, marginBottom: "16px" }}>
+              <div style={{ fontSize: "28px", fontWeight: 800, color: "#ffffff", lineHeight: 1, marginBottom: "16px" }}>
                 {plan.price}
                 <span style={{ fontSize: "12px", fontWeight: 400, color: "rgba(255,255,255,0.25)" }}>{plan.per}</span>
               </div>

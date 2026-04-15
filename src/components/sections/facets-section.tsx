@@ -41,7 +41,7 @@ export function FacetsSection() {
           СДЕЛАЕТ МНОГОЕ ДЛЯ ТЕБЯ
         </div>
 
-        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "var(--t-btn-text)", letterSpacing: "-0.02em", marginBottom: "10px" }}>
+        <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em", marginBottom: "10px" }}>
           Посмотри, что я могу сделать для тебя
         </h2>
         <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginBottom: "28px" }}>
@@ -67,10 +67,10 @@ export function FacetsSection() {
               background: "var(--t-bg-card)", border: "1px solid var(--t-border)",
               borderRadius: "18px", padding: "24px", textAlign: "left", display: "flex", flexDirection: "column",
             }}>
-              <div style={{ fontSize: "11px", fontWeight: 600, color: "#9b7dff", marginBottom: "10px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--t-brand-light)", marginBottom: "10px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                 {card.badge}
               </div>
-              <div style={{ fontSize: "15px", fontWeight: 700, color: "var(--t-btn-text)", marginBottom: "10px", lineHeight: 1.35 }}>
+              <div style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", marginBottom: "10px", lineHeight: 1.35 }}>
                 {card.title}
               </div>
               <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65, marginBottom: "14px", flexGrow: 1 }}>
