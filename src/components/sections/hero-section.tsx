@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
-import { ArrowRight, Send, BarChart2, FileText, Languages, PenLine } from "lucide-react";
+import { ArrowRight, BarChart2, FileText, Languages, PenLine, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const STATIC_HERO_PHRASES = [
@@ -67,10 +67,10 @@ function AnimatedInput() {
     <div
       style={{
         background: "rgba(12,11,22,0.98)",
-        border: "1px solid rgba(101,88,224,0.35)",
+        border: "1px solid rgba(124,58,237,0.35)",
         borderRadius: "20px",
         boxShadow:
-          "0 0 0 1px rgba(101,88,224,0.08), 0 24px 64px rgba(0,0,0,0.55), 0 0 100px rgba(101,88,224,0.07)",
+          "0 0 0 1px rgba(124,58,237,0.08), 0 24px 64px rgba(0,0,0,0.55), 0 0 100px rgba(124,58,237,0.07)",
         overflow: "hidden",
       }}
     >
@@ -95,9 +95,9 @@ function AnimatedInput() {
               fontWeight: 500,
               ...(i === 0
                 ? {
-                    background: "rgba(101,88,224,0.2)",
-                    color: "#a89ec0",
-                    border: "1px solid rgba(101,88,224,0.35)",
+                    background: "rgba(124,58,237,0.2)",
+                    color: "rgba(255,255,255,0.38)",
+                    border: "1px solid rgba(124,58,237,0.35)",
                   }
                 : { color: "#3d3858", border: "1px solid rgba(255,255,255,0.06)" }),
             }}
@@ -123,7 +123,7 @@ function AnimatedInput() {
             flex: 1,
             fontSize: "16px",
             lineHeight: "1.5",
-            color: "#a89ec0",
+            color: "rgba(255,255,255,0.38)",
             height: "26px",
             overflow: "hidden",
             whiteSpace: "nowrap",
@@ -136,7 +136,7 @@ function AnimatedInput() {
               display: "inline-block",
               width: "2px",
               height: "18px",
-              background: "#6558e0",
+              background: "#7c3aed",
               marginLeft: "2px",
               verticalAlign: "middle",
               animation: "typing-cursor 0.9s step-end infinite",
@@ -148,14 +148,14 @@ function AnimatedInput() {
             width: "42px",
             height: "42px",
             borderRadius: "12px",
-            background: "#6558e0",
+            background: "#7c3aed",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
             border: "none",
             cursor: "pointer",
-            boxShadow: "0 4px 16px rgba(101,88,224,0.45)",
+            boxShadow: "0 4px 16px rgba(124,58,237,0.45)",
           }}
         >
           <Send size={16} color="white" />
@@ -178,7 +178,7 @@ function AnimatedInput() {
               borderRadius: "999px",
               fontSize: "13px",
               border: "1px solid rgba(255,255,255,0.08)",
-              color: "#a89ec0",
+              color: "rgba(255,255,255,0.38)",
               cursor: "pointer",
             }}
           >
@@ -213,7 +213,7 @@ function RotatingHeadline({ phrases }: { phrases: string[] }) {
             top: 0,
             left: 0,
             right: 0,
-            background: "linear-gradient(135deg, #9b8ff8 0%, #6558e0 100%)",
+            background: "linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -266,7 +266,7 @@ export function HeroSection({ texts = {} }: { texts?: Record<string, string> }) 
         paddingBottom: "60px",
         position: "relative",
         background:
-          "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(101,88,224,0.18) 0%, transparent 70%), #0c0c10",
+          "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124,58,237,0.18) 0%, transparent 70%), #07070d",
       }}
     >
       <div className="container-site">
@@ -313,7 +313,7 @@ export function HeroSection({ texts = {} }: { texts?: Record<string, string> }) 
               fontWeight: 800,
               letterSpacing: "-0.025em",
               lineHeight: 1.1,
-              color: "#f0eeff",
+              color: "#ffffff",
               marginBottom: "18px",
             }}
           >
@@ -345,7 +345,7 @@ export function HeroSection({ texts = {} }: { texts?: Record<string, string> }) 
             style={{
               fontSize: "17px",
               lineHeight: 1.75,
-              color: "#a89ec0",
+              color: "rgba(255,255,255,0.38)",
               maxWidth: "520px",
               marginBottom: "48px",
             }}
@@ -428,7 +428,7 @@ export function HeroSection({ texts = {} }: { texts?: Record<string, string> }) 
                   style={{
                     fontSize: "clamp(16px, 3.5vw, 22px)",
                     fontWeight: 700,
-                    color: "#c9920a",
+                    color: "#ffffff",
                   }}
                 >
                   {s.value}
@@ -437,7 +437,7 @@ export function HeroSection({ texts = {} }: { texts?: Record<string, string> }) 
                   style={{
                     fontSize: "clamp(10px, 2vw, 12px)",
                     lineHeight: 1.45,
-                    color: "#a89ec0",
+                    color: "rgba(255,255,255,0.38)",
                   }}
                 >
                   {s.label}

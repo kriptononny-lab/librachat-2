@@ -8,31 +8,31 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Фиолетовый — глубже, менее детский */
-  --color-brand-400: #7c6af0;
-  --color-brand-500: #6c5ce7;   /* основной */
-  --color-brand-600: #5a4bd1;
-  --color-brand-700: #4a3bbf;
+  /* Фиолетовый — electric violet, используется ТОЛЬКО в 4 местах */
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #7c3aed;   /* основной */
+  --color-brand-600: #6d28d9;
+  --color-brand-700: #5b21b6;
 
-  /* Янтарный — приглушённее */
+  /* Янтарный */
   --color-amber-400: #e8952a;
   --color-amber-500: #d4820f;
 
-  /* Фоны — единый тёмный фон, без пёстрости */
-  --color-bg-base:    #0c0c10;
-  --color-bg-surface: #14131c;
-  --color-bg-raised:  #1a1925;
-  --color-bg-card:    #1e1d28;
+  /* Фоны — нейтральный тёмный, без фиолетового оттенка */
+  --color-bg-base:    #07070d;
+  --color-bg-surface: #0d0d14;
+  --color-bg-raised:  #141418;
+  --color-bg-card:    #141418;
 
-  /* Текст — контрастнее */
-  --color-text-primary:   #f0eeff;
-  --color-text-secondary: #a89ec0;
-  --color-text-muted:     #8a7fa8;
+  /* Текст — высокий контраст, нейтральный белый */
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: rgba(255,255,255,0.55);
+  --color-text-muted:     rgba(255,255,255,0.35);
 
   /* Границы */
-  --color-border:        rgba(255,255,255,0.07);
-  --color-border-medium: rgba(255,255,255,0.11);
-  --color-border-accent: rgba(108,92,231,0.35);
+  --color-border:        rgba(255,255,255,0.06);
+  --color-border-medium: rgba(255,255,255,0.09);
+  --color-border-accent: rgba(124,58,237,0.3);
 
   /* Статусы */
   --color-success: #22c55e;
@@ -102,11 +102,11 @@ body {
 
 /* Кнопка-прожектор — только на primary, без внешнего свечения */
 .btn-primary-glow {
-  box-shadow: 0 4px 20px rgba(108,92,231,0.35);
+  box-shadow: 0 4px 20px rgba(124,58,237,0.35);
   transition: box-shadow 200ms ease, background 200ms ease;
 }
 .btn-primary-glow:hover {
-  box-shadow: 0 4px 28px rgba(108,92,231,0.5);
+  box-shadow: 0 4px 28px rgba(124,58,237,0.5);
 }
 
 /* Карточки */
@@ -121,9 +121,9 @@ body {
   border-radius: var(--radius-xl);
 }
 
-/* Градиентный текст — ТОЛЬКО фиолетовый, нигде больше */
+/* Градиентный текст — только на одном слове в заголовке */
 .text-gradient {
-  background: linear-gradient(135deg, #8b7cf8 0%, #6c5ce7 100%);
+  background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -132,20 +132,19 @@ body {
 /* Янтарный цвет текста (не градиент) */
 .text-amber { color: var(--color-amber-400); }
 
-/* Бейдж секции */
+/* Бейдж секции — пульсирующая точка + текст, без капсулы */
 .section-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 14px;
-  border-radius: 9999px;
-  background: rgba(108,92,231,0.1);
-  border: 1px solid rgba(108,92,231,0.25);
+  gap: 8px;
   font-size: 11px;
-  font-weight: 600;
-  color: #a89ec0;
-  letter-spacing: 0.06em;
+  font-weight: 500;
+  color: rgba(255,255,255,0.32);
+  letter-spacing: 0.07em;
   text-transform: uppercase;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 /* Карточка с hover */
@@ -153,8 +152,8 @@ body {
   transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
 }
 .card-hover:hover {
-  border-color: rgba(108,92,231,0.3) !important;
-  background: rgba(26,25,37,0.95) !important;
+  border-color: rgba(255,255,255,0.1) !important;
+  background: rgba(26,26,30,0.95) !important;
   transform: translateY(-2px);
 }
 
@@ -226,8 +225,8 @@ button, a[class*="rounded-full"], a[class*="rounded-"] {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #9b8ff8;
-  box-shadow: 0 0 6px rgba(155,143,248,0.6);
+  background: #7c3aed;
+  box-shadow: 0 0 6px rgba(124,58,237,0.5);
   animation: badge-pulse 2s ease-in-out infinite;
   flex-shrink: 0;
 }

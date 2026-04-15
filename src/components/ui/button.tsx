@@ -15,37 +15,37 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: [
-          "bg-[#6558e0] text-white",
+          "bg-[#7c3aed] text-white",
           "hover:bg-[#5449cc]",
           "active:scale-[0.97]",
-          "focus-visible:ring-[#6558e0]",
+          "focus-visible:ring-[#7c3aed]",
           "btn-primary-glow",
         ],
         secondary: [
-          "bg-transparent text-[#f0eeff]",
+          "bg-transparent text-white",
           "border border-[rgba(255,255,255,0.14)]",
           "hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.22)]",
           "active:scale-[0.97]",
           "focus-visible:ring-white/20",
         ],
         ghost: [
-          "text-[#a89ec0]",
-          "hover:text-[#f0eeff] hover:bg-[rgba(255,255,255,0.05)]",
+          "text-[rgba(255,255,255,0.38)]",
+          "hover:text-white hover:bg-[rgba(255,255,255,0.05)]",
           "active:scale-[0.97]",
           "focus-visible:ring-white/20",
         ],
         outline: [
-          "border border-[#6558e0] text-[#9b8ff8]",
-          "hover:bg-[rgba(101,88,224,0.08)]",
+          "border border-[#7c3aed] text-[#a78bfa]",
+          "hover:bg-[rgba(124,58,237,0.08)]",
           "active:scale-[0.97]",
-          "focus-visible:ring-[#6558e0]",
+          "focus-visible:ring-[#7c3aed]",
         ],
         destructive: [
           "bg-red-600 text-white hover:bg-red-700",
           "active:scale-[0.97]",
         ],
         link: [
-          "text-[#9b8ff8] underline-offset-4 hover:underline",
+          "text-[#a78bfa] underline-offset-4 hover:underline",
           "p-0 h-auto rounded-none",
         ],
       },

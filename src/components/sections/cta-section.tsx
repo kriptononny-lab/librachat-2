@@ -27,7 +27,7 @@ export function CtaSection({ texts = {} }: { texts?: Record<string, string> }) {
             padding: "80px 48px",
             textAlign: "center",
             background: "rgba(14,13,25,0.97)",
-            border: "1px solid rgba(101,88,224,0.2)",
+            border: "1px solid rgba(124,58,237,0.2)",
           }}
         >
           {/* Линия свечения сверху */}
@@ -39,7 +39,7 @@ export function CtaSection({ texts = {} }: { texts?: Record<string, string> }) {
               right: 0,
               height: "1px",
               background:
-                "linear-gradient(90deg, transparent, rgba(108,92,231,0.6), transparent)",
+                "linear-gradient(90deg, transparent, rgba(124,58,237,0.6), transparent)",
               pointerEvents: "none",
             }}
           />
@@ -62,7 +62,7 @@ export function CtaSection({ texts = {} }: { texts?: Record<string, string> }) {
                 fontWeight: 800,
                 letterSpacing: "-0.02em",
                 lineHeight: 1.15,
-                color: "#f0eeff",
+                color: "#ffffff",
                 maxWidth: "600px",
               }}
             >
@@ -72,7 +72,7 @@ export function CtaSection({ texts = {} }: { texts?: Record<string, string> }) {
             <p
               style={{
                 fontSize: "16px",
-                color: "#a89ec0",
+                color: "rgba(255,255,255,0.38)",
                 maxWidth: "380px",
                 lineHeight: 1.7,
               }}
@@ -98,12 +98,12 @@ export function CtaSection({ texts = {} }: { texts?: Record<string, string> }) {
                   justifyContent: "center",
                   padding: "14px 36px",
                   borderRadius: "999px",
-                  background: "#6558e0",
+                  background: "#7c3aed",
                   color: "#fff",
                   fontSize: "16px",
                   fontWeight: 600,
                   textDecoration: "none",
-                  boxShadow: "0 4px 24px rgba(101,88,224,0.45)",
+                  boxShadow: "0 4px 24px rgba(124,58,237,0.45)",
                   transition: "transform 150ms ease",
                 }}
               >
@@ -118,7 +118,7 @@ export function CtaSection({ texts = {} }: { texts?: Record<string, string> }) {
                   padding: "14px 36px",
                   borderRadius: "999px",
                   background: "transparent",
-                  color: "#f0eeff",
+                  color: "#ffffff",
                   fontSize: "16px",
                   fontWeight: 600,
                   textDecoration: "none",
@@ -130,7 +130,7 @@ export function CtaSection({ texts = {} }: { texts?: Record<string, string> }) {
               </Link>
             </div>
 
-            <p style={{ fontSize: "13px", color: "#4a4560", marginTop: "4px" }}>
+            <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.22)", marginTop: "4px" }}>
               Уже более 1 480 пользователей доверяют LibraChat · Поддержка 24/7
             </p>
           </div>

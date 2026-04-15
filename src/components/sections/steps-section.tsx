@@ -71,7 +71,7 @@ export function StepsSection({ texts = {} }: { texts?: Record<string, string> })
             style={{
               marginTop: "14px",
               fontSize: "16px",
-              color: "#a89ec0",
+              color: "rgba(255,255,255,0.38)",
               maxWidth: "360px",
               margin: "14px auto 0",
               lineHeight: 1.65,
@@ -114,15 +114,15 @@ export function StepsSection({ texts = {} }: { texts?: Record<string, string> })
                     width: "68px",
                     height: "68px",
                     borderRadius: "50%",
-                    background: "rgba(101,88,224,0.12)",
-                    border: "1.5px solid rgba(101,88,224,0.3)",
+                    background: "rgba(124,58,237,0.12)",
+                    border: "1.5px solid rgba(124,58,237,0.3)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    boxShadow: "0 0 24px rgba(101,88,224,0.08)",
+                    boxShadow: "0 0 24px rgba(124,58,237,0.08)",
                   }}
                 >
-                  <step.Icon size={28} color="#9b8ff8" strokeWidth={1.5} />
+                  <step.Icon size={28} color="#a78bfa" strokeWidth={1.5} />
                 </div>
 
                 {/* Номер — маленький бейдж снизу-справа */}
@@ -134,7 +134,7 @@ export function StepsSection({ texts = {} }: { texts?: Record<string, string> })
                     width: "22px",
                     height: "22px",
                     borderRadius: "50%",
-                    background: "#6558e0",
+                    background: "#7c3aed",
                     border: "2px solid #07060e",
                     display: "flex",
                     alignItems: "center",
@@ -189,17 +189,17 @@ export function StepsSection({ texts = {} }: { texts?: Record<string, string> })
               gap: "8px",
               padding: "14px 32px",
               borderRadius: "999px",
-              background: "#6558e0",
+              background: "#7c3aed",
               color: "#fff",
               fontSize: "15px",
               fontWeight: 600,
               textDecoration: "none",
-              boxShadow: "0 4px 24px rgba(101,88,224,0.4)",
+              boxShadow: "0 4px 24px rgba(124,58,237,0.4)",
             }}
           >
             Начать бесплатно <ArrowRight size={16} />
           </Link>
-          <p style={{ marginTop: "12px", fontSize: "13px", color: "#4a4560" }}>
+          <p style={{ marginTop: "12px", fontSize: "13px", color: "rgba(255,255,255,0.22)" }}>
             30 секунд · Без карты · Без VPN
           </p>
         </motion.div>

@@ -24,10 +24,10 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
       }}>
         {items.map((item, i) => (
           <div key={i} style={{ display:"flex", alignItems:"center", gap:"0", flexShrink:0 }}>
-            <span style={{ padding:"0 28px", fontSize:"13px", fontWeight:500, color:"#4a4560", whiteSpace:"nowrap", letterSpacing:"0.02em" }}>
+            <span style={{ padding:"0 28px", fontSize:"13px", fontWeight:500, color:"rgba(255,255,255,0.22)", whiteSpace:"nowrap", letterSpacing:"0.02em" }}>
               {item}
             </span>
-            <span style={{ color:"rgba(101,88,224,0.3)", fontSize:"10px", flexShrink:0 }}>✦</span>
+            <span style={{ color:"rgba(124,58,237,0.3)", fontSize:"10px", flexShrink:0 }}>✦</span>
           </div>
         ))}
       </div>

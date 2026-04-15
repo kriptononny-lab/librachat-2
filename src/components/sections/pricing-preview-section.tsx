@@ -86,7 +86,7 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
               fontWeight: 800,
               letterSpacing: "-0.02em",
               lineHeight: 1.15,
-              color: "#f0eeff",
+              color: "#ffffff",
             }}
           >
             Ты хочешь <span className="text-gradient">такой результат?</span>
@@ -95,7 +95,7 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
             style={{
               marginTop: "14px",
               fontSize: "16px",
-              color: "#a89ec0",
+              color: "rgba(255,255,255,0.38)",
               lineHeight: 1.6,
             }}
           >
@@ -123,11 +123,11 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
                 cursor: "pointer",
                 border:
                   active === p.planId
-                    ? "1px solid rgba(108,92,231,0.5)"
+                    ? "1px solid rgba(124,58,237,0.5)"
                     : "1px solid rgba(255,255,255,0.07)",
                 background:
-                  active === p.planId ? "rgba(101,88,224,0.1)" : "rgba(20,19,28,0.5)",
-                color: active === p.planId ? "#f0eeff" : "#a89ec0",
+                  active === p.planId ? "rgba(124,58,237,0.1)" : "rgba(20,19,28,0.5)",
+                color: active === p.planId ? "#ffffff" : "rgba(255,255,255,0.38)",
                 transition: "all 180ms ease",
               }}
             >
@@ -146,10 +146,10 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
               borderRadius: "20px",
               padding: "36px",
               background: plan.isPopular
-                ? "rgba(101,88,224,0.07)"
+                ? "rgba(124,58,237,0.07)"
                 : "rgba(14,13,25,0.92)",
               border: plan.isPopular
-                ? "1px solid rgba(101,88,224,0.4)"
+                ? "1px solid rgba(124,58,237,0.4)"
                 : "1px solid rgba(255,255,255,0.09)",
             }}
           >
@@ -168,17 +168,17 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
                     style={{
                       fontSize: "clamp(36px, 4vw, 52px)",
                       fontWeight: 800,
-                      color: "#f0eeff",
+                      color: "#ffffff",
                       letterSpacing: "-0.02em",
                     }}
                   >
                     {fmt(plan.priceMonthly)}
                   </span>
                   {plan.priceMonthly > 0 && (
-                    <span style={{ fontSize: "15px", color: "#a89ec0" }}>в месяц</span>
+                    <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.38)" }}>в месяц</span>
                   )}
                   {plan.priceMonthly === 0 && (
-                    <span style={{ fontSize: "15px", color: "#a89ec0" }}>
+                    <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.38)" }}>
                       навсегда бесплатно
                     </span>
                   )}
@@ -194,7 +194,7 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
                           alignItems: "center",
                           gap: "10px",
                           fontSize: "15px",
-                          color: "#a89ec0",
+                          color: "rgba(255,255,255,0.38)",
                         }}
                       >
                         <Check size={16} color="#22c55e" style={{ flexShrink: 0 }} />
@@ -222,11 +222,11 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
                     fontSize: "15px",
                     fontWeight: 600,
                     textDecoration: "none",
-                    background: plan.isPopular ? "#6558e0" : "transparent",
-                    color: plan.isPopular ? "#fff" : "#f0eeff",
+                    background: plan.isPopular ? "#7c3aed" : "transparent",
+                    color: plan.isPopular ? "#fff" : "#ffffff",
                     border: plan.isPopular ? "none" : "1px solid rgba(255,255,255,0.18)",
                     boxShadow: plan.isPopular
-                      ? "0 4px 20px rgba(101,88,224,0.4)"
+                      ? "0 4px 20px rgba(124,58,237,0.4)"
                       : "none",
                     whiteSpace: "nowrap",
                   }}
@@ -238,7 +238,7 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
                   style={{
                     fontSize: "13px",
                     textAlign: "center",
-                    color: "#4a4560",
+                    color: "rgba(255,255,255,0.22)",
                     textDecoration: "none",
                   }}
                 >

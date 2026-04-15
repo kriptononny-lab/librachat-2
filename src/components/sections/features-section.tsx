@@ -30,8 +30,8 @@ const iconWrapStyle: React.CSSProperties = {
   width: "48px",
   height: "48px",
   borderRadius: "14px",
-  background: "rgba(101,88,224,0.12)",
-  border: "1px solid rgba(101,88,224,0.22)",
+  background: "rgba(124,58,237,0.12)",
+  border: "1px solid rgba(124,58,237,0.22)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -50,11 +50,11 @@ export function FeaturesSection() {
           style={{ textAlign: "center", marginBottom: "56px" }}
         >
           <div className="section-badge" style={{ marginBottom: "16px" }}>ВСЁ В ОДНОМ ОКНЕ</div>
-          <h2 style={{ fontSize: "clamp(28px, 3vw, 44px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#f0eeff" }}>
+          <h2 style={{ fontSize: "clamp(28px, 3vw, 44px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#ffffff" }}>
             Посмотри, что я могу{" "}
             <span className="text-gradient">сделать для тебя</span>
           </h2>
-          <p style={{ marginTop: "14px", fontSize: "16px", color: "#a89ec0", maxWidth: "440px", margin: "14px auto 0", lineHeight: 1.6 }}>
+          <p style={{ marginTop: "14px", fontSize: "16px", color: "rgba(255,255,255,0.38)", maxWidth: "440px", margin: "14px auto 0", lineHeight: 1.6 }}>
             Это лишь несколько идей. Но я могу больше.
           </p>
         </motion.div>
@@ -70,7 +70,7 @@ export function FeaturesSection() {
               style={cardStyle}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "rgba(101,88,224,0.35)";
+                el.style.borderColor = "rgba(124,58,237,0.35)";
                 el.style.background = "rgba(26,25,38,0.98)";
                 el.style.transform = "translateY(-3px)";
               }}
@@ -82,11 +82,11 @@ export function FeaturesSection() {
               }}
             >
               <div style={iconWrapStyle}>
-                <Icon size={22} color="#9b8ff8" />
+                <Icon size={22} color="#a78bfa" />
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                <h3 style={{ fontSize: "16px", fontWeight: 600, color: "#f0eeff", lineHeight: 1.3 }}>{title}</h3>
-                <p style={{ fontSize: "14px", lineHeight: 1.75, color: "#a89ec0" }}>{desc}</p>
+                <h3 style={{ fontSize: "16px", fontWeight: 600, color: "#ffffff", lineHeight: 1.3 }}>{title}</h3>
+                <p style={{ fontSize: "14px", lineHeight: 1.75, color: "rgba(255,255,255,0.38)" }}>{desc}</p>
               </div>
             </motion.div>
           ))}

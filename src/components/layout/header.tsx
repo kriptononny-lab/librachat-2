@@ -52,11 +52,11 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
         href={item.href}
         style={{
           fontSize: "14px", fontWeight: 500, padding: "6px 4px",
-          color: isActive ? "#f0eeff" : "#a89ec0",
+          color: isActive ? "#ffffff" : "rgba(255,255,255,0.38)",
           textDecoration: "none", transition: "color 150ms ease",
         }}
-        onMouseEnter={e => (e.currentTarget.style.color = "#f0eeff")}
-        onMouseLeave={e => (e.currentTarget.style.color = isActive ? "#f0eeff" : "#a89ec0")}
+        onMouseEnter={e => (e.currentTarget.style.color = "#ffffff")}
+        onMouseLeave={e => (e.currentTarget.style.color = isActive ? "#ffffff" : "rgba(255,255,255,0.38)")}
       >
         {item.label}
       </Link>
@@ -68,12 +68,12 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
       <button style={{
         display: "inline-flex", alignItems: "center", gap: "5px",
         fontSize: "14px", fontWeight: 500, padding: "6px 4px",
-        color: isActive ? "#f0eeff" : "#a89ec0",
+        color: isActive ? "#ffffff" : "rgba(255,255,255,0.38)",
         background: "none", border: "none", cursor: "pointer",
         transition: "color 150ms ease",
       }}
-        onMouseEnter={e => (e.currentTarget.style.color = "#f0eeff")}
-        onMouseLeave={e => (e.currentTarget.style.color = isActive ? "#f0eeff" : "#a89ec0")}
+        onMouseEnter={e => (e.currentTarget.style.color = "#ffffff")}
+        onMouseLeave={e => (e.currentTarget.style.color = isActive ? "#ffffff" : "rgba(255,255,255,0.38)")}
       >
         {item.label}
         <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }} style={{ display: "flex" }}>
@@ -111,7 +111,7 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: "16px",
               padding: "8px",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(101,88,224,0.08)",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(124,58,237,0.08)",
               position: "relative", zIndex: 2,
             }}>
               {item.children.map((child, i) => (
@@ -119,26 +119,26 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
                   key={child.href + i}
                   href={child.href}
                   style={{ display: "flex", alignItems: "center", gap: "12px", padding: "10px 12px", borderRadius: "10px", textDecoration: "none", transition: "background 150ms ease" }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(101,88,224,0.12)"; }}
+                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(124,58,237,0.12)"; }}
                   onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
                 >
                   {/* Иконка */}
                   <div style={{
                     width: "36px", height: "36px", borderRadius: "10px", flexShrink: 0,
-                    background: "rgba(101,88,224,0.1)", border: "1px solid rgba(101,88,224,0.2)",
+                    background: "rgba(124,58,237,0.1)", border: "1px solid rgba(124,58,237,0.2)",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#9b8ff8",
+                    color: "#a78bfa",
                   }}>
                     {child.icon ? ICON_MAP[child.icon] : <MessageSquare size={18} />}
                   </div>
 
                   {/* Текст */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                    <span style={{ fontSize: "14px", fontWeight: 600, color: "#f0eeff", lineHeight: 1.3 }}>
+                    <span style={{ fontSize: "14px", fontWeight: 600, color: "#ffffff", lineHeight: 1.3 }}>
                       {child.label}
                     </span>
                     {child.description && (
-                      <span style={{ fontSize: "12px", color: "#6b6480", lineHeight: 1.4 }}>
+                      <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.28)", lineHeight: 1.4 }}>
                         {child.description}
                       </span>
                     )}
@@ -154,11 +154,11 @@ function NavItem({ item }: { item: (typeof MAIN_NAV)[number] }) {
                 display: "flex", alignItems: "center", justifyContent: "center",
               }}>
                 <Link href={item.href} style={{
-                  fontSize: "12px", color: "#6558e0", textDecoration: "none", fontWeight: 500,
+                  fontSize: "12px", color: "#7c3aed", textDecoration: "none", fontWeight: 500,
                   display: "flex", alignItems: "center", gap: "4px",
                 }}
-                  onMouseEnter={e => (e.currentTarget.style.color = "#9b8ff8")}
-                  onMouseLeave={e => (e.currentTarget.style.color = "#6558e0")}
+                  onMouseEnter={e => (e.currentTarget.style.color = "#a78bfa")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "#7c3aed")}
                 >
                   Смотреть всё →
                 </Link>
@@ -205,7 +205,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         position:"absolute", top:0, right:0, bottom:0,
         width:"min(300px, 85vw)",
         display:"flex", flexDirection:"column",
-        background:"#13121f",
+        background:"#111118",
         borderLeft:"1px solid rgba(255,255,255,0.1)",
         zIndex:1,
         overflowY:"auto",
@@ -215,7 +215,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           <Logo size="sm" />
           <button
             onClick={onClose}
-            style={{ padding:"8px", borderRadius:"10px", color:"#a89ec0", background:"transparent", border:"none", cursor:"pointer", fontSize:"20px", lineHeight:1 }}
+            style={{ padding:"8px", borderRadius:"10px", color:"rgba(255,255,255,0.38)", background:"transparent", border:"none", cursor:"pointer", fontSize:"20px", lineHeight:1 }}
           >
             ✕
           </button>
@@ -231,7 +231,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                   display:"flex", alignItems:"center", padding:"12px 14px",
                   borderRadius:"10px", fontSize:"15px", fontWeight:500, textDecoration:"none",
                   color: isActive ? "#fff" : "#c0b8d8",
-                  background: isActive ? "rgba(101,88,224,0.15)" : "transparent",
+                  background: isActive ? "rgba(124,58,237,0.15)" : "transparent",
                 }}>
                   {item.label}
                 </Link>
@@ -240,7 +240,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                     {item.children.map(child => (
                       <Link key={child.href + child.label} href={child.href} style={{
                         display:"block", padding:"8px 10px", fontSize:"13px",
-                        color:"#6b6480", textDecoration:"none",
+                        color:"rgba(255,255,255,0.28)", textDecoration:"none",
                       }}>
                         {child.label}
                       </Link>
@@ -264,7 +264,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             display:"flex", alignItems:"center", justifyContent:"center",
             padding:"13px", borderRadius:"999px", fontSize:"15px", fontWeight:600,
             color:"#fff", textDecoration:"none",
-            background:"#6558e0", boxShadow:"0 4px 16px rgba(101,88,224,0.4)",
+            background:"#7c3aed", boxShadow:"0 4px 16px rgba(124,58,237,0.4)",
           }}>Начать бесплатно</Link>
         </div>
       </div>
@@ -328,7 +328,7 @@ export function Header() {
                 flexShrink: 0,
               }}
             >
-              <Menu size={22} color="#a89ec0" />
+              <Menu size={22} color="rgba(255,255,255,0.38)" />
             </button>
           </div>
         </div>

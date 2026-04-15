@@ -58,7 +58,7 @@ export function Footer() {
       {/* Тонкая акцентная линия с фиолетовым свечением */}
       <div style={{
         height: "1px",
-        background: "linear-gradient(90deg, transparent 0%, rgba(101,88,224,0.3) 30%, rgba(101,88,224,0.5) 50%, rgba(101,88,224,0.3) 70%, transparent 100%)",
+        background: "linear-gradient(90deg, transparent 0%, rgba(124,58,237,0.3) 30%, rgba(124,58,237,0.5) 50%, rgba(124,58,237,0.3) 70%, transparent 100%)",
       }} />
 
       <div className="container-site" style={{ padding: "56px 0 40px" }}>
@@ -69,7 +69,7 @@ export function Footer() {
           {/* Бренд */}
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <Logo />
-            <p style={{ fontSize: "14px", color: "#4a4560", lineHeight: 1.65, maxWidth: "220px" }}>
+            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.22)", lineHeight: 1.65, maxWidth: "220px" }}>
               ИИ-ассистент нового поколения для работы, учёбы и творчества.
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "4px" }}>
@@ -78,7 +78,7 @@ export function Footer() {
                   style={{
                     width: "36px", height: "36px", borderRadius: "10px",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#4a4560", background: "rgba(255,255,255,0.04)",
+                    color: "rgba(255,255,255,0.22)", background: "rgba(255,255,255,0.04)",
                     border: "1px solid rgba(255,255,255,0.07)",
                     textDecoration: "none", transition: "all 200ms ease",
                   }}
@@ -97,7 +97,7 @@ export function Footer() {
               </p>
               {col.links.map((link) => (
                 <Link key={link.href} href={link.href}
-                  style={{ fontSize: "14px", color: "#4a4560", textDecoration: "none", transition: "color 150ms ease", lineHeight: 1.4 }}
+                  style={{ fontSize: "14px", color: "rgba(255,255,255,0.22)", textDecoration: "none", transition: "color 150ms ease", lineHeight: 1.4 }}
                 >
                   {link.label}
                 </Link>
@@ -111,12 +111,12 @@ export function Footer() {
               Поддержка
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <p style={{ fontSize: "11px", color: "#2e2a3e", textTransform: "uppercase", letterSpacing: "0.05em" }}>Email</p>
-              <a href="mailto:support@librachat.kz" style={{ fontSize: "13px", color: "#4a4560", textDecoration: "none" }}>support@librachat.kz</a>
-              <a href="mailto:business@librachat.kz" style={{ fontSize: "13px", color: "#4a4560", textDecoration: "none" }}>business@librachat.kz</a>
-              <p style={{ fontSize: "11px", color: "#2e2a3e", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: "6px" }}>Телефон</p>
-              <a href="tel:+77478703783" style={{ fontSize: "13px", color: "#4a4560", textDecoration: "none" }}>+7 747 870 37 83</a>
-              <p style={{ fontSize: "12px", color: "#2e2a3e", lineHeight: 1.4 }}>Пн–Пт, 9:00–18:00 (GMT+6)</p>
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.1)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Email</p>
+              <a href="mailto:support@librachat.kz" style={{ fontSize: "13px", color: "rgba(255,255,255,0.22)", textDecoration: "none" }}>support@librachat.kz</a>
+              <a href="mailto:business@librachat.kz" style={{ fontSize: "13px", color: "rgba(255,255,255,0.22)", textDecoration: "none" }}>business@librachat.kz</a>
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.1)", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: "6px" }}>Телефон</p>
+              <a href="tel:+77478703783" style={{ fontSize: "13px", color: "rgba(255,255,255,0.22)", textDecoration: "none" }}>+7 747 870 37 83</a>
+              <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.1)", lineHeight: 1.4 }}>Пн–Пт, 9:00–18:00 (GMT+6)</p>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@ export function Footer() {
           display: "flex", alignItems: "center", justifyContent: "space-between",
           gap: "16px", flexWrap: "wrap",
         }}>
-          <p style={{ fontSize: "13px", color: "#2e2a3e" }}>
+          <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.1)" }}>
             © {year} LibraChat. Все права защищены.
           </p>
 
