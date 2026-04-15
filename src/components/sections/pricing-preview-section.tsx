@@ -78,6 +78,7 @@ export function PricingPreviewSection({ plans }: { plans?: StrapiPlan[] }) {
       <div className="container-site" style={{ maxWidth: "780px" }}>
         <div style={{ textAlign: "center", marginBottom: "52px" }}>
           <div className="section-badge" style={{ marginBottom: "16px" }}>
+            <span className="badge-dot" />
             ТАРИФЫ
           </div>
           <h2

@@ -49,7 +49,7 @@ export function FeaturesSection() {
           transition={{ duration: 0.45 }}
           style={{ textAlign: "center", marginBottom: "56px" }}
         >
-          <div className="section-badge" style={{ marginBottom: "16px" }}>ВСЁ В ОДНОМ ОКНЕ</div>
+          <div className="section-badge" style={{ marginBottom: "16px" }}><span className="badge-dot" />ВСЁ В ОДНОМ ОКНЕ</div>
           <h2 style={{ fontSize: "clamp(28px, 3vw, 44px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#ffffff" }}>
             Посмотри, что я могу{" "}
             <span className="text-gradient">сделать для тебя</span>

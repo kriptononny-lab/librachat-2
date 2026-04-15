@@ -122,6 +122,7 @@ export function SocialProofSection({
           style={{ textAlign: "center", marginBottom: "56px" }}
         >
           <div className="section-badge" style={{ marginBottom: "16px" }}>
+            <span className="badge-dot" />
             {badge}
           </div>
           <h2
